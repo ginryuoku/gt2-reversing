@@ -56,6 +56,10 @@ segments:
     subsegments:
       - [0x800, asm, part1] # estimated
       - [0x2538, data, strings] # estimated
+      - [0x25F8, bin, notice.tim.gz]
+      - [0x23A2C, bin, logo-scea.tim.gz]
+      - [0x245A0, data, strings2]
+      - [0x245E4, pad, nops]
       - [0x4DE00, asm, start]
       - [0x4DEE0, asm, part2]
   - [0x99800]
