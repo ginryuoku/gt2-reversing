@@ -50,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+orig_bin/scus_94488/GT2.OVL
+orig_bin/scus_94488/SCUS_944.88
