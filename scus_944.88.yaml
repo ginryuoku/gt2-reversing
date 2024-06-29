@@ -2,7 +2,7 @@ name: SCUS_944.88
 sha1: 3030aa271c0a4022fc69ce09d76a6bc75e69a32a
 options:
   basename: scus_944.88
-  target_path: SCUS_944.88
+  target_path: orig_bin/scus_94488/SCUS_944.88
   base_path: .
   platform: psx
   compiler: GCC
@@ -54,6 +54,8 @@ segments:
     vram: 0x80010000
     # bss_size: Please fill out this value when you figure out the bss size
     subsegments:
-      - [0x800, asm, 800] # estimated
-      - [0x2538, data, 2538] # estimated
+      - [0x800, asm, part1] # estimated
+      - [0x2538, data, strings] # estimated
+      - [0x4DE00, asm, start]
+      - [0x4DEE0, asm, part2]
   - [0x99800]
