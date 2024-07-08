@@ -52,14 +52,14 @@ segments:
     type: code
     start: 0x800
     vram: 0x80010000
-    # bss_size: Please fill out this value when you figure out the bss size
+    bss_size: 0x2981C
     subsegments:
       - [0x800, asm, part1] # estimated
       - [0x2538, data, strings] # estimated
       - [0x25F8, bin, notice.tim.gz]
       - [0x23A2C, bin, logo-scea.tim.gz]
       - [0x245A0, data, strings2]
-      - [0x245E4, pad, nops]
+      - [0x245E4, bss, bss]
       - [0x4DE00, asm, start]
       - [0x4DEE0, asm, part2]
   - [0x99800]
