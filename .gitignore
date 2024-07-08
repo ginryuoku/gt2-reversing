@@ -50,5 +50,11 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+asm/
+build/
 orig_bin/scus_94488/GT2.OVL
 orig_bin/scus_94488/SCUS_944.88
+undefined_syms_auto.txt
+undefined_funcs_auto.txt
+assets/
+*.ld

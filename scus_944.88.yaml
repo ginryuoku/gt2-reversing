@@ -54,7 +54,21 @@ segments:
     vram: 0x80010000
     bss_size: 0x2981C
     subsegments:
-      - [0x800, asm, part1] # estimated
+      - [0x800, asm, f10000]
+      - [0x8C0, asm, f100c0]
+      - [0x8E4, asm, f100e4]
+      - [0x9FC, asm, f101fc]
+      - [0xA28, asm, f10228]
+      - [0xADC, asm, f102dc]
+      - [0xC7C, asm, f1047c]
+      - [0xCA0, asm, f104a0]
+      - [0xF98, asm, f10798]
+      - [0xFB4, asm, f107b4]
+      - [0xFE8, asm, f107e8]
+      - [0x102C, asm, f1082c]
+      - [0x103C, asm, f1083c]
+      - [0x1068, asm, f10868]
+      - [0x10C0, asm, part1]
       - [0x2538, data, strings] # estimated
       - [0x25F8, bin, notice.tim.gz]
       - [0x23A2C, bin, logo-scea.tim.gz]
