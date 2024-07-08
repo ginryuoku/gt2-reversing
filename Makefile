@@ -89,7 +89,7 @@ endif
 ### Sources ###
 
 # Object files
-OBJECTS := $(shell grep -E 'BUILD_PATH.+\.o' $(LD_SCRIPT) -o)
+OBJECTS := $(shell grep -E 'build.+\.o' $(LD_SCRIPT) -o)
 OBJECTS := $(OBJECTS:BUILD_PATH/%=$(BUILD_DIR)/%)
 DEPENDS := $(OBJECTS:=.d)
 
