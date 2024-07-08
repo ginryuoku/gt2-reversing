@@ -52,7 +52,7 @@ SPLAT      := $(PYTHON) -m splat split $(SPLAT_YAML)
 DIFF       := diff
 MASPSX     := $(PYTHON) tools/maspsx/maspsx.py --aspsx-version=2.81 -G4096
 
-CROSS    := mips-elf-
+CROSS    := mips-linux-gnu-
 AS       := $(CROSS)as -EL
 LD       := $(CROSS)ld -EL
 OBJCOPY  := $(CROSS)objcopy
@@ -132,9 +132,7 @@ $(BUILD_DIR)/%.bin.o: %.bin
 
 $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	@$(PRINT)$(GREEN)Preprocessing linker script: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
-	$(V)$(CPP) -P -DBUILD_PATH=$(BUILD_DIR) $< -o $@
-#Temporary hack for noload segment wrong alignment
-#	@sed -r -i 's/\.main_bss \(NOLOAD\) : SUBALIGN\(4\)/.main_bss main_SDATA_END (NOLOAD) : SUBALIGN(4)/g' $@
+	$(V)cp $(LD_SCRIPT) $(BUILD_DIR)/$(LD_SCRIPT)
 
 # Link the .o files into the .elf
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) $(BUILD_DIR)/$(LD_SCRIPT)
@@ -145,7 +143,7 @@ $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) $(BUILD_DIR)/$(LD_SCRIPT)
 $(EXE): $(BUILD_DIR)/$(TARGET).elf
 	@$(PRINT)$(GREEN)Creating EXE: $(ENDGREEN)$(BLUE)$@$(ENDBLUE)$(ENDLINE)
 	$(V)$(OBJCOPY) $< $@ -O binary
-	$(V)$(OBJCOPY) -O binary --gap-fill 0x00 --pad-to 0x05BFE0 $< $@
+#	$(V)$(OBJCOPY) -O binary --gap-fill 0x00 --pad-to 0x05BFE0 $< $@
 ifeq ($(COMPARE),1)
 	@$(DIFF) $(BASEEXE) $(EXE) && printf "OK\n" || (echo 'The build succeeded, but did not match the base EXE. This is expected if you are making changes to the game. To skip this check, use "make COMPARE=0".' && false)
 endif

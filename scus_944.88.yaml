@@ -9,7 +9,7 @@ options:
 
   # asm_path: asm
   # src_path: src
-  build_path: BUILD_PATH
+  build_path: build
   # create_asm_dependencies: True
 
   ld_script_path: scus_944.88.ld
