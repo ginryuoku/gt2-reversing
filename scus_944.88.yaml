@@ -7,10 +7,10 @@ options:
   platform: psx
   compiler: GCC
 
-  # asm_path: asm
-  # src_path: src
+  asm_path: asm
+  src_path: src
   build_path: build
-  # create_asm_dependencies: True
+  create_asm_dependencies: True
 
   ld_script_path: scus_944.88.ld
 
@@ -52,9 +52,9 @@ segments:
     type: code
     start: 0x800
     vram: 0x80010000
-    bss_size: 0x2981C
+    #bss_size: 0x2981C
     subsegments:
-      - [0x800, asm, f10000]
+      - [0x800, asm, ovl_f10000]
       - [0x8C0, asm, f100c0]
       - [0x8E4, asm, f100e4]
       - [0x9FC, asm, f101fc]
@@ -69,11 +69,15 @@ segments:
       - [0x103C, asm, f1083c]
       - [0x1068, asm, f10868]
       - [0x10C0, asm, part1]
+      - [0x1954, asm, ovl_f11154]
+      - [0x1A4C, asm, part2]
+      - [0x1C6C, asm, ovl_f1146c]
+      - [0x1C94, asm, part3]
       - [0x2538, data, strings] # estimated
       - [0x25F8, bin, notice.tim.gz]
       - [0x23A2C, bin, logo-scea.tim.gz]
       - [0x245A0, data, strings2]
-      - [0x245E4, bss, bss]
+      - [0x245E4, pad, nops]
       - [0x4DE00, asm, start]
-      - [0x4DEE0, asm, part2]
+      - [0x4DEE0, asm, part4]
   - [0x99800]

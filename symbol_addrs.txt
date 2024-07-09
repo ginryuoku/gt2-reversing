@@ -1,0 +1,2 @@
+strncmp = 0x8008dfd4;
+bzero = 0x8008dfe4;
