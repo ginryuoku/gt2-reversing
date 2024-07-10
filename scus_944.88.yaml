@@ -71,6 +71,7 @@ segments:
     type: code
     start: 0x4DE00
     vram: 0x8005D600
+    align: 4
     subsegments:
-      - [0x4DE00, bin, start]
+      - [0x4DE00, asm, start]
   - [0x99800]
