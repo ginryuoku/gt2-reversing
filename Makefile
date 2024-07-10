@@ -79,7 +79,7 @@ ENDLINE := \n'
 ASFLAGS        := -Iinclude -march=r3000 -mtune=r3000 -no-pad-sections
 CFLAGS         := -O2 -G4096 -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fgnu-linker -mgas -mgpOPT -mgpopt -msoft-float -gcoff -quiet
 CPPFLAGS       := -Iinclude
-LDFLAGS        := -T undefined_syms.txt -T undefined_funcs_auto.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) \
+LDFLAGS        := -T undefined_syms_auto.txt -T undefined_funcs_auto.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) \
                   --no-check-sections -nostdlib
 
 ifeq ($(NON_MATCHING),1)

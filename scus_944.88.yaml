@@ -53,11 +53,24 @@ segments:
     start: 0x800
     vram: 0x80010000
     #bss_size: 0x2981C
+    align: 4
     subsegments:
-      - [0x800, bin, part1]
+      - [0x800, asm, main]
+
+  - name: textures
+    type: code
+    start: 0x25F8
+    vram: 0x80011DF8
+    align: 4
+    subsegments:
       - [0x25F8, bin, notice.tim.gz]
       - [0x23A2C, bin, logo-scea.tim.gz]
       - [0x245A0, bin, part2]
-      - [0x4DE00, bin, start] # start() call - using to test for unwanted linker reordering
-      - [0x4DEE0, bin, part3]
+
+  - name: bootstrap
+    type: code
+    start: 0x4DE00
+    vram: 0x8005D600
+    subsegments:
+      - [0x4DE00, bin, start]
   - [0x99800]
