@@ -55,7 +55,7 @@ segments:
     #bss_size: 0x2981C
     align: 4
     subsegments:
-      - [0x800, asm, main]
+      - [0x800, c, main]
 
   - name: textures
     type: code
@@ -73,5 +73,5 @@ segments:
     vram: 0x8005D600
     align: 4
     subsegments:
-      - [0x4DE00, asm, start]
+      - [0x4DE00, c, start]
   - [0x99800]
