@@ -37,7 +37,7 @@ options:
 
   extensions_path: tools/splat_ext
 
-  subalign: 2
+  subalign: 4
 
   string_encoding: ASCII
   data_string_encoding: ASCII
@@ -55,7 +55,7 @@ segments:
     #bss_size: 0x2981C
     align: 4
     subsegments:
-      - [0x800, c, main]
+      - [0x800, c, autogen/main_0]
 
   - name: textures
     type: code
@@ -73,5 +73,5 @@ segments:
     vram: 0x8005D600
     align: 4
     subsegments:
-      - [0x4DE00, c, start]
+      - [0x4DE00, c, autogen/start]
   - [0x99800]
