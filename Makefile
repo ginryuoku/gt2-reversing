@@ -47,8 +47,8 @@ LD_MAP       := $(BUILD_DIR)/$(TARGET).map
 ### Tools ###
 
 PYTHON     := python3
-SPLAT_YAML := $(BASEEXE).yaml
-SPLAT      := $(PYTHON) -m splat split $(SPLAT_YAML)
+SPLAT_YAML := $(TARGET).yaml
+SPLAT      := splat split $(SPLAT_YAML)
 DIFF       := diff
 MASPSX     := $(PYTHON) tools/maspsx/maspsx.py --aspsx-version=2.81 -G4096
 
@@ -105,6 +105,8 @@ clean:
 distclean: clean
 	$(V)rm -f $(LD_SCRIPT)
 	$(V)rm -rf asm
+	$(V)rm -rf assets
+	$(V)rm -rf src/autogen/*
 	$(V)rm -rf *_auto.txt
 
 setup: distclean split
