@@ -52,7 +52,6 @@ segments:
     type: code
     start: 0x800
     vram: 0x80010000
-    #bss_size: 0x2981C
     align: 4
     subsegments:
       - [0x800, c, autogen/main_0]
