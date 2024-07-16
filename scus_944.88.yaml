@@ -56,15 +56,30 @@ segments:
     subsegments:
       - [0x800, c, autogen/main_0]
 
+  - name: data
+    type: data
+    start: 0x2530
+    vram: 0x80011D30
+    align: 4
+    subsegments:
+      - [0x2530, data, rodata-pt1]
+  
   - name: textures
-    type: code
+    type: bin
     start: 0x25F8
     vram: 0x80011DF8
     align: 4
     subsegments:
       - [0x25F8, bin, notice.tim.gz]
       - [0x23A2C, bin, logo-scea.tim.gz]
-      - [0x245A0, bin, part2]
+
+  - name: data2
+    type: data
+    start: 0x245A0
+    vram: 0x80033DA0
+    align: 4
+    subsegments:
+      - [0x245A0, data, rodata-pt2]
 
   - name: bootstrap
     type: code
