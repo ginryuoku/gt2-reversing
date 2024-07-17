@@ -58,7 +58,7 @@ LD       := $(CROSS)ld -EL
 OBJCOPY  := $(CROSS)objcopy
 STRIP    := $(CROSS)strip
 CPP      := tools/gcc2.8.1-mipsel/cpp
-CC       := tools/gcc2.8.1-mipsel/cc1
+CC       := tools/homebrew-psyq44/cc1
 
 PRINT := printf '
  ENDCOLOR := \033[0m
