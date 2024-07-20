@@ -1,3 +1,6 @@
 [submodule "tools/maspsx"]
 	path = tools/maspsx
 	url = https://github.com/mkst/maspsx.git
+[submodule "tools/GTModTools"]
+	path = tools/GTModTools
+	url = https://github.com/CookiePLMonster/GTModTools.git
