@@ -46,6 +46,8 @@ gt2_main_task0b10                           = 0x80011b70;
 gt2_main_task0b1                            = 0x80011c70;
 gt2_main_task0b2                            = 0x80011ce4;
 
+str_gt2_ovl_name                            = 0x80011d30;
+
 start                                       = 0x8005d600;
 gt2_main                                    = 0x8005d6e0;
 gt2_unknown_t0b2100                         = 0x8005d718;
@@ -57,11 +59,14 @@ gt2_unk_intovr_task0                        = 0x8005d80c;
 gt2_main_task0b1100                         = 0x8005d848;
 gt2_main_task0b11                           = 0x8005d8a0;
 
+gt2_main_task2001                           = 0x8007ab74;
 gt2_sysinit_task00_dma_vsync                = 0x8007d09c;
 gt2_main_task0710                           = 0x8007fe8c;
 gt2_main_task0780                           = 0x8007fec8;
 
 gt2_init                                    = 0x8008ce08;
+gt2_main_task0a_ovr_func3                   = 0x8008cfe0;
+gt2_main_task0a_ovr_func2                   = 0x8008d0d0;
 gt2_init_task00                             = 0x8008dd74;
 gt2_init_task0                              = 0x8008ddb4;
 
