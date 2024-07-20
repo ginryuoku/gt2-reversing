@@ -2,7 +2,7 @@
 # Based on martinbean/thunder makefile from 2024-07-08
 
 # Build options
-BASEEXE := orig_bin/scus_94488/SCUS_944.88
+BASEEXE := orig_bin/gt2_us12_simdisk/SCUS_944.88
 TARGET := scus_944.88
 COMPARE ?= 1
 NON_MATCHING ?= 0

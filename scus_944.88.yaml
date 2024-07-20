@@ -2,7 +2,7 @@ name: SCUS_944.88
 sha1: 3030aa271c0a4022fc69ce09d76a6bc75e69a32a
 options:
   basename: scus_944.88
-  target_path: orig_bin/scus_94488/SCUS_944.88
+  target_path: orig_bin/gt2_us12_simdisk/SCUS_944.88
   base_path: .
   platform: psx
   compiler: GCC
