@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 asm/
 build/
-orig_bin/scus_94488/*
+orig_bin/gt2_us12_simdisk/*
 orig_bin/opm27/*
 undefined_syms_auto.txt
 undefined_funcs_auto.txt
