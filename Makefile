@@ -7,7 +7,12 @@ BASEPATH := config/$(VERSION)
 BASEEXE := $(BASEPATH)/bin/SCUS_944.88
 BASEOVL := $(BASEPATH)/bin/GT2.OVL
 TARGET := scus_944.88
+TARGETS := $(TARGET_MAIN) $(TARGET_OVR)
+TARGET_MAIN := scus_944.88
+TARGET_OVR := gt2_0
 TARGET_LBL := mainexe
+TARGET_MAIN_LBL := mainexe
+TARGET_OVR_LBL := ovr
 COMPARE ?= 1
 NON_MATCHING ?= 0
 VERBOSE ?= 0
@@ -115,10 +120,12 @@ distclean: clean
 	$(V)rm -rf $(BASEPATH)/*_auto.txt
 	$(V)rm -rf $(BASEPATH)/bin/*.exe
 
-setup: distclean split
+setup: distclean ovl_split split
+
+ovl_split:
+	$(V)$(OVL_SPLIT)
 
 split:
-	$(V)$(OVL_SPLIT)
 	$(V)$(SPLAT)
 
 # Compile .c files

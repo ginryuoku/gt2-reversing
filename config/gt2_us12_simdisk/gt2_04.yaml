@@ -1,0 +1,54 @@
+name: gt2_04
+sha1: 7f7af7658baac06a4f1ab144edd7db8d48c2563c
+options:
+  basename: gt2_04
+  target_path: bin/gt2_04.exe
+  base_path: ..
+  platform: psx
+  compiler: GCC
+
+  asm_path: ../../asm
+  src_path: ../../src
+  build_path: ../../build
+  create_asm_dependencies: True
+
+  ld_script_path: gt2_04.ld
+
+  find_file_boundaries: False
+  gp_value: 0x00000000
+
+  o_as_suffix: False
+  use_legacy_include_asm: False
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+
+  section_order: [".rodata", ".text", ".data", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+
+  symbol_addrs_path:
+    - ovr4_symbol_addrs.txt
+  reloc_addrs_path:
+    - ovr4_reloc_addrs.txt
+
+  undefined_funcs_auto_path: ovr4_undefined_funcs_auto.txt
+  undefined_syms_auto_path: ovr4_undefined_syms_auto.txt
+
+  extensions_path: tools/splat_ext
+
+  subalign: 4
+
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+segments:
+  - name: ovr4
+    type: code
+    start: 0x0
+    vram: 0x80010000
+    align: 4
+    subsegments:
+      - [0x0, c, autogen/ovr4]
+  - [0x2CEC]
