@@ -5,6 +5,7 @@
 VERSION := gt2_us12_simdisk
 BASEPATH := config/$(VERSION)
 BASEEXE := $(BASEPATH)/bin/SCUS_944.88
+BASEOVL := $(BASEPATH)/bin/GT2.OVL
 TARGET := scus_944.88
 TARGET_LBL := mainexe
 COMPARE ?= 1
@@ -52,6 +53,7 @@ LD_MAP       := $(BUILD_DIR)/$(TARGET).map
 PYTHON     := python3
 SPLAT_YAML := config/$(VERSION)/$(TARGET).yaml
 SPLAT      := splat split $(SPLAT_YAML)
+OVL_SPLIT  := $(PYTHON) tools/GTModTools/ovl.py unpack -o $(BASEPATH)/bin $(BASEOVL)
 DIFF       := diff
 MASPSX     := $(PYTHON) tools/maspsx/maspsx.py --aspsx-version=2.81 -G4096
 
@@ -110,11 +112,13 @@ distclean: clean
 	$(V)rm -rf asm
 	$(V)rm -rf assets
 	$(V)rm -rf src/autogen/*
-	$(V)rm -rf config/$(VERSION)/*_auto.txt
+	$(V)rm -rf $(BASEPATH)/*_auto.txt
+	$(V)rm -rf $(BASEPATH)/bin/*.exe
 
 setup: distclean split
 
 split:
+	$(V)$(OVL_SPLIT)
 	$(V)$(SPLAT)
 
 # Compile .c files
