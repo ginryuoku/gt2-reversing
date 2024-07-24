@@ -2,8 +2,11 @@
 # Based on martinbean/thunder makefile from 2024-07-08
 
 # Build options
-BASEEXE := orig_bin/gt2_us12_simdisk/SCUS_944.88
+VERSION := gt2_us12_simdisk
+BASEPATH := config/$(VERSION)
+BASEEXE := $(BASEPATH)/bin/SCUS_944.88
 TARGET := scus_944.88
+TARGET_LBL := mainexe
 COMPARE ?= 1
 NON_MATCHING ?= 0
 VERBOSE ?= 0
@@ -47,7 +50,7 @@ LD_MAP       := $(BUILD_DIR)/$(TARGET).map
 ### Tools ###
 
 PYTHON     := python3
-SPLAT_YAML := $(TARGET).yaml
+SPLAT_YAML := config/$(VERSION)/$(TARGET).yaml
 SPLAT      := splat split $(SPLAT_YAML)
 DIFF       := diff
 MASPSX     := $(PYTHON) tools/maspsx/maspsx.py --aspsx-version=2.81 -G4096
@@ -79,8 +82,8 @@ ENDLINE := \n'
 ASFLAGS        := -Iinclude -march=r3000 -mtune=r3000 -no-pad-sections
 CFLAGS         := -O2 -G0 -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fgnu-linker -mgas -mgpOPT -mgpopt -msoft-float -gcoff -quiet
 CPPFLAGS       := -Iinclude
-LDFLAGS        := -T undefined_syms.txt -T undefined_funcs_auto.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) \
-                  --no-check-sections -nostdlib
+LDFLAGS        := -T config/$(VERSION)/$(TARGET_LBL)_undefined_syms.txt -T config/$(VERSION)/$(TARGET_LBL)_undefined_funcs_auto.txt \
+                  -T $(BUILD_DIR)/$(TARGET).ld -Map $(LD_MAP) --no-check-sections -nostdlib
 
 ifeq ($(NON_MATCHING),1)
 CPPFLAGS += -DNON_MATCHING
@@ -89,7 +92,7 @@ endif
 ### Sources ###
 
 # Object files
-OBJECTS := $(shell grep -E 'build.+\.o' $(LD_SCRIPT) -o)
+OBJECTS := $(shell grep -E 'build.+\.o' $(BASEPATH)/$(LD_SCRIPT) -o)
 OBJECTS := $(OBJECTS:build/%=$(BUILD_DIR)/%)
 DEPENDS := $(OBJECTS:=.d)
 
@@ -103,11 +106,11 @@ clean:
 	$(V)rm -rf $(BUILD_DIR)
 
 distclean: clean
-	$(V)rm -f $(LD_SCRIPT)
+	$(V)rm -f $(BASEPATH)/$(LD_SCRIPT)
 	$(V)rm -rf asm
 	$(V)rm -rf assets
 	$(V)rm -rf src/autogen/*
-	$(V)rm -rf *_auto.txt
+	$(V)rm -rf config/$(VERSION)/*_auto.txt
 
 setup: distclean split
 
@@ -132,9 +135,9 @@ $(BUILD_DIR)/%.bin.o: %.bin
 	@mkdir -p $(shell dirname $@)
 	$(V)$(LD) -r -b binary -o $@ $<
 
-$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
+$(BUILD_DIR)/$(LD_SCRIPT): $(BASEPATH)/$(LD_SCRIPT)
 	@$(PRINT)$(GREEN)Preprocessing linker script: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
-	$(V)cp $(LD_SCRIPT) $(BUILD_DIR)/$(LD_SCRIPT)
+	$(V)cp $(BASEPATH)/$(LD_SCRIPT) $(BUILD_DIR)/$(LD_SCRIPT)
 
 # Link the .o files into the .elf
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) $(BUILD_DIR)/$(LD_SCRIPT)

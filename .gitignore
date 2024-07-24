@@ -52,10 +52,11 @@ Mkfile.old
 dkms.conf
 asm/
 build/
-orig_bin/gt2_us12_simdisk/*
-orig_bin/opm27/*
-undefined_syms_auto.txt
-undefined_funcs_auto.txt
+config/gt2_us12_simdisk/bin
+config/gt2_us12_simdisk/*.ld
+config/gt2_us12_simdisk/mainexe_undefined_syms_auto.txt
+config/gt2_us12_simdisk/mainexe_undefined_funcs_auto.txt
 assets/
 *.ld
 src/autogen/*
+.vscode/c_cpp_properties.json
