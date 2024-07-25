@@ -118,6 +118,7 @@ distclean: clean
 	$(V)rm -rf assets
 	$(V)rm -rf src/autogen/*
 	$(V)rm -rf $(BASEPATH)/ovl_bin
+	$(V)rm -f build.ninja .ninja_log
 
 setup: distclean split
 
