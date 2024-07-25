@@ -4,8 +4,8 @@
 # Build options
 VERSION := gt2_us12_simdisk
 BASEPATH := config/$(VERSION)
-BASEEXE := $(BASEPATH)/bin/SCUS_944.88
-BASEOVL := $(BASEPATH)/bin/GT2.OVL
+BASEEXE := $(BASEPATH)/orig_bin/SCUS_944.88
+BASEOVL := $(BASEPATH)/orig_bin/GT2.OVL
 TARGET := scus_944.88
 TARGETS := $(TARGET_MAIN) $(TARGET_OVR)
 TARGET_MAIN := scus_944.88
@@ -89,7 +89,7 @@ ENDLINE := \n'
 ASFLAGS        := -Iinclude -march=r3000 -mtune=r3000 -no-pad-sections
 CFLAGS         := -O2 -G0 -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fgnu-linker -mgas -mgpOPT -mgpopt -msoft-float -gcoff -quiet
 CPPFLAGS       := -Iinclude
-LDFLAGS        := -T config/$(VERSION)/$(TARGET_LBL)_undefined_syms.txt -T config/$(VERSION)/$(TARGET_LBL)_undefined_funcs_auto.txt \
+LDFLAGS        := -T config/$(VERSION)/$(TARGET_LBL)_undefined_syms.txt -T config/$(VERSION)/autogen/$(TARGET_LBL)_undefined_funcs_auto.txt \
                   -T $(BUILD_DIR)/$(TARGET).ld -Map $(LD_MAP) --no-check-sections -nostdlib
 
 ifeq ($(NON_MATCHING),1)
@@ -99,7 +99,7 @@ endif
 ### Sources ###
 
 # Object files
-OBJECTS := $(shell grep -E 'build.+\.o' $(BASEPATH)/$(LD_SCRIPT) -o)
+OBJECTS := $(shell grep -E 'build.+\.o' $(BASEPATH)/autogen/$(LD_SCRIPT) -o)
 OBJECTS := $(OBJECTS:build/%=$(BUILD_DIR)/%)
 DEPENDS := $(OBJECTS:=.d)
 
@@ -113,20 +113,17 @@ clean:
 	$(V)rm -rf $(BUILD_DIR)
 
 distclean: clean
-	$(V)rm -f $(BASEPATH)/$(LD_SCRIPT)
+	$(V)rm -rf $(BASEPATH)/autogen
 	$(V)rm -rf asm
 	$(V)rm -rf assets
 	$(V)rm -rf src/autogen/*
-	$(V)rm -rf $(BASEPATH)/*_auto.txt
-	$(V)rm -rf $(BASEPATH)/bin/*.exe
+	$(V)rm -rf $(BASEPATH)/ovl_bin
 
-setup: distclean ovl_split split
-
-ovl_split:
-	$(V)$(OVL_SPLIT)
+setup: distclean split
 
 split:
-	$(V)$(SPLAT)
+	$(V)$(PYTHON) build_gen.py > build.ninja
+	$(V)ninja
 
 # Compile .c files
 $(BUILD_DIR)/%.c.o: %.c
@@ -146,9 +143,9 @@ $(BUILD_DIR)/%.bin.o: %.bin
 	@mkdir -p $(shell dirname $@)
 	$(V)$(LD) -r -b binary -o $@ $<
 
-$(BUILD_DIR)/$(LD_SCRIPT): $(BASEPATH)/$(LD_SCRIPT)
+$(BUILD_DIR)/$(LD_SCRIPT): $(BASEPATH)/autogen/$(LD_SCRIPT)
 	@$(PRINT)$(GREEN)Preprocessing linker script: $(ENDGREEN)$(BLUE)$<$(ENDBLUE)$(ENDLINE)
-	$(V)cp $(BASEPATH)/$(LD_SCRIPT) $(BUILD_DIR)/$(LD_SCRIPT)
+	$(V)cp $(BASEPATH)/autogen/$(LD_SCRIPT) $(BUILD_DIR)/$(LD_SCRIPT)
 
 # Link the .o files into the .elf
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) $(BUILD_DIR)/$(LD_SCRIPT)

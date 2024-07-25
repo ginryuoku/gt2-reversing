@@ -52,10 +52,9 @@ Mkfile.old
 dkms.conf
 asm/
 build/
-config/gt2_us12_simdisk/bin
-config/gt2_us12_simdisk/*.ld
-config/gt2_us12_simdisk/mainexe_undefined_syms_auto.txt
-config/gt2_us12_simdisk/mainexe_undefined_funcs_auto.txt
+config/gt2_us12_simdisk/orig_bin
+config/gt2_us12_simdisk/ovl_bin
+config/gt2_us12_simdisk/autogen
 assets/
 *.ld
 src/autogen/*

@@ -1,9 +1,9 @@
 name: gt2_05
-sha1: 7f7af7658baac06a4f1ab144edd7db8d48c2563c
+sha1: 76d3d705ad6e452030f98d15a4a8a3b0f5bdc280
 options:
   basename: gt2_05
-  target_path: bin/gt2_05.exe
-  base_path: ..
+  target_path: ovl_bin/gt2_05.exe
+  base_path: .
   platform: psx
   compiler: GCC
 
@@ -12,7 +12,7 @@ options:
   build_path: ../../build
   create_asm_dependencies: True
 
-  ld_script_path: gt2_05.ld
+  ld_script_path: autogen/gt2_05.ld
 
   find_file_boundaries: False
   gp_value: 0x00000000
@@ -32,8 +32,8 @@ options:
   reloc_addrs_path:
     - ovr5_reloc_addrs.txt
 
-  undefined_funcs_auto_path: ovr5_undefined_funcs_auto.txt
-  undefined_syms_auto_path: ovr5_undefined_syms_auto.txt
+  undefined_funcs_auto_path: autogen/ovr5_undefined_funcs_auto.txt
+  undefined_syms_auto_path: autogen/ovr5_undefined_syms_auto.txt
 
   extensions_path: tools/splat_ext
 
