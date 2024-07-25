@@ -59,3 +59,4 @@ assets/
 *.ld
 src/autogen/*
 .vscode/c_cpp_properties.json
+build.ninja
