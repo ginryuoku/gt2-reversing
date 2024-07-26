@@ -111,6 +111,8 @@ ld_maps = []
 ld_targets = []
 ld_flag_table = []
 ld_out = []
+ovl_split_outputs = []
+all_objects = []
 
 # definition for undefined syms path table
 undefined_syms = []
@@ -138,6 +140,7 @@ for i in range(7):
         ld_targets.append(GAME_OVRNAME + LD_EXT)
         ld_maps.append(GAME_OVRNAME + MAP_EXT)
         ld_out.append(GAME_OVRNAME + ELF_EXT)
+        ovl_split_outputs.append(BINPATH + "/" + GAME_OVRNAME + EXE_EXT)
         undefined_funcs.append(OVRNAME + UNDEFINED_FUNCS_NAME_AUTO)
         if undefined_syms_auto[i] == 1:
             undefined_syms.append("/autogen/" + OVRNAME + UNDEFINED_SYMS_NAME_AUTO)
@@ -146,7 +149,7 @@ for i in range(7):
 
 for i in range(7):
     ld_flag_table.append("-T " + BASEPATH + undefined_syms[i] + " -T " + BASEPATH_AUTOGEN +
-                    undefined_funcs[i] + " -Map " + BUILDDIR + ld_maps[i] + LDFLAGS_BASE)
+                    undefined_funcs[i])
 
 splat_targets_path = [BASEPATH + "/" + s for s in splat_targets]
 ld_targets_path = [BASEPATH + "/autogen/" + s for s in ld_targets]
@@ -174,7 +177,7 @@ writer.rule("asset", ASSET_CMD)
 # builds C files into objects
 writer.rule("cpp", CPP_CMD)
 # links objects into final elf files
-writer.rule("ld", LD + " -T $in $ldflags -o $out")
+writer.rule("ld", LD + " $ldflags -T $in -Map $ldmap $ldflags_base -o $out")
 # objcopy .elf to a final exe
 writer.rule("objcopy", OBJCOPY + " $in $out -O binary")
 # compare binaries
@@ -183,7 +186,7 @@ writer.rule("diff", "diff $in $out", deps=EXE)
 writer.rule("copy", "cp $in $out")
 
 # generate actual ninja rules
-writer.build(BINPATH, "ovl_split", BASEOVL)
+writer.build(BINPATH, "ovl_split", BASEOVL, implicit_outputs=ovl_split_outputs)
 
 for filename in splat_targets_path:
     target_num = splat_targets_path.index(filename)
@@ -195,28 +198,37 @@ for filename in splat_targets_path:
                          cpp_targets_autogen_end)
         writer.build(TARGET_NAME, "split", filename, implicit_outputs=implicit_outs)
     else:
-        writer.build(TARGET_NAME, "split", filename, implicit_outputs=[ld_targets_path[target_num]])
-
-for filename in ld_targets_path:
-    target_num = ld_targets_path.index(filename)
-    ld_flags = ld_flag_table[target_num]
-    writer.build(BUILDDIR + ld_targets[target_num], "copy", filename)
-
-    if EXE_ONLY == 0 or (EXE_ONLY == 1 and target_num == 0) :
-        writer.build(ld_out[target_num], "ld", BUILDDIR + ld_targets[target_num],
-                     variables={'ldflags':ld_flags})
+        writer.build(TARGET_NAME, "split", filename, implicit=[ovl_split_outputs[target_num - 1]], implicit_outputs=[ld_targets_path[target_num]])
 
 for filename in asm_targets:
     target_num = asm_targets.index(filename)
-    writer.build(BUILDDIR + filename + O_EXT, "asm", filename)
+    output = BUILDDIR + filename + O_EXT
+    all_objects.append(output)
+    writer.build(output, "asm", filename)
 
 for filename in bin_targets:
     target_num = bin_targets.index(filename)
-    writer.build(BUILDDIR + filename + O_EXT, "asset", filename)
+    output = BUILDDIR + filename + O_EXT
+    all_objects.append(output)
+    writer.build(output, "asset", filename)
 
 for filename in cpp_targets:
     target_num = cpp_targets.index(filename)
-    writer.build(BUILDDIR + filename + O_EXT, "cpp", filename)
+    output = BUILDDIR + filename + O_EXT
+    all_objects.append(output)
+    writer.build(output, "cpp", filename)
+
+for filename in ld_targets_path:
+    target_num = ld_targets_path.index(filename)
+    ldflags = ld_flag_table[target_num]
+    ld_map = BUILDDIR + ld_maps[target_num]
+    ldflags_base = LDFLAGS_BASE
+    writer.build(BUILDDIR + ld_targets[target_num], "copy", filename)
+
+    if EXE_ONLY == 0 or (EXE_ONLY == 1 and target_num == 0):
+        writer.build(ld_out[target_num], "ld", BUILDDIR + ld_targets[target_num], implicit=all_objects,
+                     variables={'ldflags':ldflags,'ldmap':ld_map,'ldflags_base':ldflags_base})
+
 
 writer.build(EXE, "objcopy", ELF)
 #writer.build(BASEEXE, "diff", EXE)
