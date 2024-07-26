@@ -1,67 +1,222 @@
-import ninja_syntax
-import os
+"""Build generator for rebuilding Gran Turismo 2 game code."""
+#import os
 import sys
+import ninja_syntax
+
 
 # possible values: gt1, gt2, gt2k. only gt2 is supported for now.
-game = "gt2"
+GAME = "gt2"
 # possible versions: jpbeta, jp10, jp11, us10, us11, us12, eubeta, eu10
 # not all versions are possible.
-region_version = "us12"
-# possible values: "arcade", "simdisk". 
+REGION_VERSION = "us12"
+# possible values: "arcade", "simdisk".
 # "combined" is unsupported atm. It will be supported for gt1 and for gt2 combined.
 # yymmdd will also be used for denoting betas/demos that do not resemble retail.
-disk = "simdisk"
+DISK = "simdisk"
 # unused, but is_demo = 1 means that the title is a demo that does not obey
 # retail game structures.
-is_demo = 0
+IS_DEMO = 0
+# are we building matching or nonmatching?
+NON_MATCHING = 0
+# are we building the main exe only or the overlays as well?
+EXE_ONLY = 1
 
-version_exe = ""
+VERSION_EXE = ""
 
-if disk == "arcade":
-    if region_version == "jp11" or region_version == "us12":
-        raise ValueError(region_version + " is not a valid arcade GT2 disk version.")
-    elif region_version in ["us10", "us11"]:
-        version_exe = "scus_944.55"
-    elif region_version in ["jpbeta", "jp10"]:
-        version_exe = "scps_101.16"
-    elif region_version in ["eubeta", "eu10"]:
-        version_exe = "sces_023.80"
-elif disk == "simdisk":
-    if region_version == "eubeta":
-        raise ValueError(region_version + " is not a valid simulation GT2 disk version.")
-    elif region_version in ["us10", "us11", "us12"]:
-        version_exe = "scus_944.88"
-    elif region_version in ["jpbeta", "jp10", "jp11"]:
-        version_exe = "scps_101.17"
-    elif region_version == "eu10":
-        version_exe = "sces_123.80"
+if DISK == "arcade":
+    if REGION_VERSION == "jp11" or REGION_VERSION == "us12":
+        raise ValueError(REGION_VERSION + " is not a valid arcade GT2 disk version.")
+    if REGION_VERSION in ["us10", "us11"]:
+        VERSION_EXE = "scus_944.55"
+    elif REGION_VERSION in ["jpbeta", "jp10"]:
+        VERSION_EXE = "scps_101.16"
+    elif REGION_VERSION in ["eubeta", "eu10"]:
+        VERSION_EXE = "sces_023.80"
+elif DISK == "simdisk":
+    if REGION_VERSION == "eubeta":
+        raise ValueError(REGION_VERSION + " is not a valid simulation GT2 disk version.")
+    if REGION_VERSION in ["us10", "us11", "us12"]:
+        VERSION_EXE = "scus_944.88"
+    elif REGION_VERSION in ["jpbeta", "jp10", "jp11"]:
+        VERSION_EXE = "scps_101.17"
+    elif REGION_VERSION == "eu10":
+        VERSION_EXE = "sces_123.80"
 else:
-    raise ValueError(disk + " is not a valid GT2 disk type.")
+    raise ValueError(DISK + " is not a valid GT2 disk type.")
 
-python_exe = "python"
-ovl_split_exe = "tools/GTModTools/ovl.py"
-version = game + "_" + region_version + "_" + disk
-basepath = "config/" + version
-binpath = basepath + "/ovl_bin"
-baseovl = basepath + "/orig_bin/GT2.OVL"
+# miscellaneous string-building constants
+ELF_EXT = ".elf"
+EXE_EXT = ".exe"
+LD_EXT = ".ld"
+MAP_EXT = ".map"
+O_EXT = ".o"
+YAML_EXT = ".yaml"
 
-splat_targets = [version_exe + ".yaml", 
-                 "gt2_01.yaml",
-                 "gt2_02.yaml",
-                 "gt2_03.yaml", 
-                 "gt2_04.yaml", 
-                 "gt2_05.yaml", 
-                 "gt2_06.yaml"]
-splat_targets_path = [basepath + "/" + s for s in splat_targets]
-ovl_split_cmd = python_exe + " " + ovl_split_exe + " unpack -o $out $in"  
+# path string-building constants
+VERSION = GAME + "_" + REGION_VERSION + "_" + DISK
+BASEPATH = "config/" + VERSION
+BASEPATH_AUTOGEN = BASEPATH + "/autogen/"
+BINPATH = BASEPATH + "/ovl_bin"
+BASEOVL = BASEPATH + "/orig_bin/GT2.OVL"
+BASEEXE = BASEPATH + "/orig_bin/" + VERSION_EXE.upper()
+INCPATH = "include"
+INCOPT = " -I" + INCPATH + " "
+BUILDDIR = "build/"
+PIPE = " | "
+UNDEFINED_SYMS_NAME = "_undefined_syms.txt"
+UNDEFINED_SYMS_NAME_AUTO = "_undefined_syms_auto.txt"
+UNDEFINED_FUNCS_NAME_AUTO = "_undefined_funcs_auto.txt"
 
+# compiler options. please do not remove leading spaces.
+ASFLAGS = INCOPT + "-march=r3000 -mtune=r3000 -no-pad-sections"
+MASPSXFLAGS = "--aspsx-version=2.81 -G4096" # not sure -G4096 is correct?
+CFLAGS = (" -O2 -G0 -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fgnu-linker -mgas "
+          "-mgpOPT -mgpopt -msoft-float -gcoff -quiet")
+CPPFLAGS = INCOPT + "-lang-c"
+LDFLAGS_BASE = " --no-check-sections -nostdlib"
+
+# executable names and locations
+CROSS = "mips-linux-gnu-"
+AS = CROSS + "as -EL"
+LD = CROSS + "ld -EL"
+OBJCOPY = CROSS + "objcopy"
+CPP = "tools/gcc2.8.1-mipsel/cpp"
+CC = "tools/homebrew-psyq44/cc1"
+PYTHON_EXE = "python"
+OVL_SPLIT_EXE = "tools/GTModTools/ovl.py"
+MASPSX_EXE = " tools/maspsx/maspsx.py "
+SPLAT = "splat" # change this if you have splat installed elsewhere, like a test build
+MASPSX = PYTHON_EXE + MASPSX_EXE + MASPSXFLAGS
+
+# output locations
+EXE = BUILDDIR + VERSION_EXE
+ELF = EXE + ".elf"
+
+# place .s targets here, autogenerated or not
+asm_targets = ["asm/header.s",
+               "asm/data/data.data.s", 
+               "asm/data/data2.data.s"]
+# place binary targets here (likely the textures for OVR0)
+bin_targets = ["assets/textures.bin"]
+# this stays empty and is filled with the autogen ovr[n].c files
+cpp_targets_autogen = []
+# any c files autogenerated go here that aren't covered by cpp_targets_autogen
+cpp_targets_autogen_end = ["src/autogen/start.c"]
+# place any actual c files here
+cpp_targets_end = []
+# these stay empty.
+# yes, even ld_flags, because we need to do some command generation to make it work.
+splat_targets = []
+ld_maps = []
+ld_targets = []
+ld_flag_table = []
+ld_out = []
+
+# definition for undefined syms path table
+undefined_syms = []
+undefined_funcs = []
+# USER-EDITABLE: does OVR0 (mainexe) or OVR1-6 use an autogenerated undefined symbols table?
+undefined_syms_auto = [0, 1, 1, 1, 1, 1, 1]
+
+# build target lists
+for i in range(7):
+    OVRNAME = "ovr" + str(i)
+    cpp_targets_autogen.append("src/autogen/" + OVRNAME + ".c")
+    if i == 0:
+        splat_targets.append(VERSION_EXE + YAML_EXT)
+        ld_maps.append(VERSION_EXE + MAP_EXT)
+        ld_targets.append(VERSION_EXE + LD_EXT)
+        ld_out.append(ELF)
+        undefined_funcs.append("mainexe" + UNDEFINED_FUNCS_NAME_AUTO)
+        if undefined_syms_auto[i] == 1:
+            undefined_syms.append("/autogen/mainexe" + UNDEFINED_SYMS_NAME_AUTO)
+        else:
+            undefined_syms.append("/mainexe" + UNDEFINED_SYMS_NAME)
+    else:
+        GAME_OVRNAME = GAME + "_0" + str(i)
+        splat_targets.append(GAME_OVRNAME + YAML_EXT)
+        ld_targets.append(GAME_OVRNAME + LD_EXT)
+        ld_maps.append(GAME_OVRNAME + MAP_EXT)
+        ld_out.append(GAME_OVRNAME + ELF_EXT)
+        undefined_funcs.append(OVRNAME + UNDEFINED_FUNCS_NAME_AUTO)
+        if undefined_syms_auto[i] == 1:
+            undefined_syms.append("/autogen/" + OVRNAME + UNDEFINED_SYMS_NAME_AUTO)
+        else:
+            undefined_syms.append("/" + OVRNAME + UNDEFINED_SYMS_NAME)
+
+for i in range(7):
+    ld_flag_table.append("-T " + BASEPATH + undefined_syms[i] + " -T " + BASEPATH_AUTOGEN +
+                    undefined_funcs[i] + " -Map " + BUILDDIR + ld_maps[i] + LDFLAGS_BASE)
+
+splat_targets_path = [BASEPATH + "/" + s for s in splat_targets]
+ld_targets_path = [BASEPATH + "/autogen/" + s for s in ld_targets]
+cpp_targets = cpp_targets_autogen + cpp_targets_autogen_end + cpp_targets_end
+
+# command invocations for rules
+OVL_SPLIT_CMD = PYTHON_EXE + " " + OVL_SPLIT_EXE + " unpack -o $out $in"
+AS_CMD = AS + ASFLAGS + " -o $out $in"
+ASSET_CMD = LD + " -r -b binary -o $out $in"
+SPLAT_CMD = SPLAT + " split $in"
+CPP_CMD = CPP + CPPFLAGS + " $in |" + CC + CFLAGS + PIPE + MASPSX + PIPE + AS + ASFLAGS + " -o $out"
+
+# invoke ninja's writer
 writer = ninja_syntax.Writer(sys.stdout)
 
-writer.rule("split", "splat split $in")
-writer.rule("ovl_split", ovl_split_cmd)
+# list of rules
+# assembles loose files per asm_targets
+writer.rule("asm", AS_CMD)
+# splats files per pre-gen table
+writer.rule("split", SPLAT_CMD)
+# splits GT2.OVL into files as needed
+writer.rule("ovl_split", OVL_SPLIT_CMD)
+# builds binary objects into object files.
+writer.rule("asset", ASSET_CMD)
+# builds C files into objects
+writer.rule("cpp", CPP_CMD)
+# links objects into final elf files
+writer.rule("ld", LD + " -T $in $ldflags -o $out")
+# objcopy .elf to a final exe
+writer.rule("objcopy", OBJCOPY + " $in $out -O binary")
+# compare binaries
+writer.rule("diff", "diff $in $out", deps=EXE)
+# generic copy rule to prep build/
+writer.rule("copy", "cp $in $out")
 
-writer.build(binpath, "ovl_split", baseovl)
+# generate actual ninja rules
+writer.build(BINPATH, "ovl_split", BASEOVL)
 
 for filename in splat_targets_path:
     target_num = splat_targets_path.index(filename)
-    writer.build("src/autogen/ovr" + str(target_num) + ".c", "split", filename)
+    TARGET_NAME = "src/autogen/ovr" + str(target_num) + ".c"
+    if target_num == 0:
+        implicit_outs = ([ld_targets_path[target_num]] +
+                         asm_targets +
+                         bin_targets +
+                         cpp_targets_autogen_end)
+        writer.build(TARGET_NAME, "split", filename, implicit_outputs=implicit_outs)
+    else:
+        writer.build(TARGET_NAME, "split", filename, implicit_outputs=[ld_targets_path[target_num]])
+
+for filename in ld_targets_path:
+    target_num = ld_targets_path.index(filename)
+    ld_flags = ld_flag_table[target_num]
+    writer.build(BUILDDIR + ld_targets[target_num], "copy", filename)
+
+    if EXE_ONLY == 0 or (EXE_ONLY == 1 and target_num == 0) :
+        writer.build(ld_out[target_num], "ld", BUILDDIR + ld_targets[target_num],
+                     variables={'ldflags':ld_flags})
+
+for filename in asm_targets:
+    target_num = asm_targets.index(filename)
+    writer.build(BUILDDIR + filename + O_EXT, "asm", filename)
+
+for filename in bin_targets:
+    target_num = bin_targets.index(filename)
+    writer.build(BUILDDIR + filename + O_EXT, "asset", filename)
+
+for filename in cpp_targets:
+    target_num = cpp_targets.index(filename)
+    writer.build(BUILDDIR + filename + O_EXT, "cpp", filename)
+
+writer.build(EXE, "objcopy", ELF)
+#writer.build(BASEEXE, "diff", EXE)
