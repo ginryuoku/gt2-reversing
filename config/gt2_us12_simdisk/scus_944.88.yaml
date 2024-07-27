@@ -58,7 +58,7 @@ segments:
       - [0x800, c, autogen/ovr0]
       - [0x1614, c, ovr0/gt2_main_task0]
       - [0x16CC, c, ovr0/gt2_show_vendor_bootlogo_task0]
-      - [0x171C, asm, autogen/ovr0]
+      - [0x171C, c, autogen/ovr0_1]
 
   - name: data
     type: data
