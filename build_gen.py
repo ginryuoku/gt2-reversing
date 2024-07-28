@@ -206,44 +206,50 @@ for filename in splat_targets_path:
                          cpp_targets_autogen_end)
         writer.build(TARGET_NAME, "split", filename, implicit_outputs=implicit_outs)
     else:
-        writer.build(TARGET_NAME, "split", filename, implicit=[ovl_split_outputs[target_num - 1]], implicit_outputs=[ld_targets_path[target_num]])
+        writer.build(TARGET_NAME,
+                     "split",
+                     filename,
+                     implicit=[ovl_split_outputs[target_num - 1]],
+                     implicit_outputs=[ld_targets_path[target_num]])
 
 for filename in asm_targets:
     target_num = asm_targets.index(filename)
-    output = BUILDDIR + filename + O_EXT
-    all_objects.append(output)
-    writer.build(output, "asm", filename)
+    OUTPUT = BUILDDIR + filename + O_EXT
+    all_objects.append(OUTPUT)
+    writer.build(OUTPUT, "asm", filename)
 
 for filename in bin_targets:
     target_num = bin_targets.index(filename)
-    output = BUILDDIR + filename + O_EXT
-    all_objects.append(output)
-    writer.build(output, "asset", filename)
+    OUTPUT = BUILDDIR + filename + O_EXT
+    all_objects.append(OUTPUT)
+    writer.build(OUTPUT, "asset", filename)
 
 for filename in cpp_targets:
     target_num = cpp_targets.index(filename)
-    output = BUILDDIR + filename + O_EXT
-    all_objects.append(output)
-    writer.build(output, "cpp", filename)
+    OUTPUT = BUILDDIR + filename + O_EXT
+    all_objects.append(OUTPUT)
+    writer.build(OUTPUT, "cpp", filename)
 
 for filename in ld_targets_path:
     target_num = ld_targets_path.index(filename)
     ldflags = ld_flag_table[target_num]
     ld_map = BUILDDIR + ld_maps[target_num]
-    ldflags_base = LDFLAGS_BASE
     writer.build(BUILDDIR + ld_targets[target_num], "copy", filename)
 
     if EXE_ONLY == 0 or (EXE_ONLY == 1 and target_num == 0):
-        writer.build(ld_out[target_num], "ld", BUILDDIR + ld_targets[target_num], implicit=all_objects,
-                     variables={'ldflags':ldflags,'ldmap':ld_map,'ldflags_base':ldflags_base})
+        writer.build(ld_out[target_num],
+                     "ld",
+                     BUILDDIR + ld_targets[target_num],
+                     implicit=all_objects,
+                     variables={'ldflags':ldflags,'ldmap':ld_map,'ldflags_base':LDFLAGS_BASE})
 
 for i in range(7):
     if i == 0:
-        input = ELF
-        output = EXE
-        writer.build(output, "objcopy", input)
+        INPUTFILE = ELF
+        OUTPUT = EXE
+        writer.build(OUTPUT, "objcopy", INPUTFILE)
     else:
-        input = BUILDDIR + GAME + "_0" + str(i) + ELF_EXT
-        output = BUILDDIR + GAME + "_0" + str(i) + EXE_EXT
-        writer.build(output, "objcopy", input)
+        INPUTFILE = BUILDDIR + GAME + "_0" + str(i) + ELF_EXT
+        OUTPUT = BUILDDIR + GAME + "_0" + str(i) + EXE_EXT
+        writer.build(OUTPUT, "objcopy", INPUTFILE)
 #writer.build(BASEEXE, "diff", EXE)
