@@ -21,28 +21,33 @@ NON_MATCHING = 0
 # are we building the main exe only or the overlays as well?
 EXE_ONLY = 0
 
-VERSION_EXE = ""
+def detect_mainexe_name(region_version, disk):
+    """Finds the executable name for the stated version of the disk."""
+    version_exe = ""
 
-if DISK == "arcade":
-    if REGION_VERSION == "jp11" or REGION_VERSION == "us12":
-        raise ValueError(REGION_VERSION + " is not a valid arcade GT2 disk version.")
-    if REGION_VERSION in ["us10", "us11"]:
-        VERSION_EXE = "scus_944.55"
-    elif REGION_VERSION in ["jpbeta", "jp10"]:
-        VERSION_EXE = "scps_101.16"
-    elif REGION_VERSION in ["eubeta", "eu10"]:
-        VERSION_EXE = "sces_023.80"
-elif DISK == "simdisk":
-    if REGION_VERSION == "eubeta":
-        raise ValueError(REGION_VERSION + " is not a valid simulation GT2 disk version.")
-    if REGION_VERSION in ["us10", "us11", "us12"]:
-        VERSION_EXE = "scus_944.88"
-    elif REGION_VERSION in ["jpbeta", "jp10", "jp11"]:
-        VERSION_EXE = "scps_101.17"
-    elif REGION_VERSION == "eu10":
-        VERSION_EXE = "sces_123.80"
-else:
-    raise ValueError(DISK + " is not a valid GT2 disk type.")
+    if disk == "arcade":
+        if region_version == "jp11" or region_version == "us12":
+            raise ValueError(region_version + " is not a valid arcade GT2 disk version.")
+        if region_version in ["us10", "us11"]:
+            version_exe = "scus_944.55"
+        elif region_version in ["jpbeta", "jp10"]:
+            version_exe = "scps_101.16"
+        elif region_version in ["eubeta", "eu10"]:
+            version_exe = "sces_023.80"
+    elif disk == "simdisk":
+        if region_version == "eubeta":
+            raise ValueError(region_version + " is not a valid simulation GT2 disk version.")
+        if region_version in ["us10", "us11", "us12"]:
+            version_exe = "scus_944.88"
+        elif region_version in ["jpbeta", "jp10", "jp11"]:
+            version_exe = "scps_101.17"
+        elif region_version == "eu10":
+            version_exe = "sces_123.80"
+    else:
+        raise ValueError(disk + " is not a valid GT2 disk type.")
+    return version_exe
+
+VERSION_EXE = detect_mainexe_name(REGION_VERSION, DISK)
 
 # miscellaneous string-building constants
 ELF_EXT = ".elf"
