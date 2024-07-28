@@ -55,10 +55,14 @@ segments:
     vram: 0x80010000
     align: 4
     subsegments:
-      - [0x800, c, autogen/ovr0]
+      - [0x800, asm, ovr0/gt2_main_task0a_ovr_func0]
+      - [0x8C0, c, ovr0/gt2_main_task0a_ovr_entrypoint]
+      - [0x8E4, c, autogen/ovr0]
       - [0x1614, c, ovr0/gt2_main_task0]
       - [0x16CC, c, ovr0/gt2_show_vendor_bootlogo_task0]
       - [0x171C, c, autogen/ovr0_1]
+      - [0x1C6C, c, ovr0/gt2_main_task0a_ovr_func1]
+      - [0x1C94, c, autogen/ovr0_2]
 
   - name: data
     type: data
