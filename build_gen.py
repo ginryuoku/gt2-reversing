@@ -189,7 +189,7 @@ writer.rule("ovl_split", OVL_SPLIT_CMD)
 # builds binary objects into object files.
 writer.rule("asset", ASSET_CMD)
 # builds C files into objects
-writer.rule("cpp", CPP_CMD)
+writer.rule("cpp", CPP_CMD, depfile="$out.asmproc.d")
 # links objects into final elf files
 writer.rule("ld", LD + " $ldflags -T $in -Map $ldmap $ldflags_base -o $out")
 # objcopy .elf to a final exe
@@ -198,6 +198,7 @@ writer.rule("objcopy", OBJCOPY + " $in $out -O binary")
 writer.rule("diff", "diff $in $built && touch $out")
 # generic copy rule to prep build/
 writer.rule("copy", "cp $in $out")
+# emits build statistics
 writer.rule("postbuild", "python build_post.py | tee build_progress.txt")
 
 # generate actual ninja rules
@@ -206,18 +207,21 @@ writer.build(BINPATH, "ovl_split", BASEOVL, implicit_outputs=ovl_split_outputs)
 for filename in splat_targets_path:
     target_num = splat_targets_path.index(filename)
     TARGET_NAME = "src/autogen/ovr" + str(target_num) + ".c"
+    implicit_outs = []
+    implicit_outs.append(ld_targets_path[target_num])
+    implicit_outs.append(BASEPATH_AUTOGEN + undefined_funcs[target_num])
+    implicit_outs.append(BUILDDIR + ld_maps[target_num])
     if target_num == 0:
-        implicit_outs = ([ld_targets_path[target_num]] +
-                         asm_targets +
-                         bin_targets +
-                         cpp_targets_autogen_end)
+        implicit_outs.extend(asm_targets)
+        implicit_outs.extend(bin_targets)
+        implicit_outs.extend(cpp_targets_autogen_end)
         writer.build(TARGET_NAME, "split", filename, implicit_outputs=implicit_outs)
     else:
         writer.build(TARGET_NAME,
                      "split",
                      filename,
                      implicit=[ovl_split_outputs[target_num - 1]],
-                     implicit_outputs=[ld_targets_path[target_num]])
+                     implicit_outputs=implicit_outs)
 
 for filename in asm_targets:
     target_num = asm_targets.index(filename)
@@ -244,10 +248,13 @@ for filename in ld_targets_path:
     writer.build(BUILDDIR + ld_targets[target_num], "copy", filename)
 
     if EXE_ONLY == 0 or (EXE_ONLY == 1 and target_num == 0):
+        implicit_inputs = []
+        implicit_inputs.extend(all_objects)
+        implicit_inputs.append(ld_map)
         writer.build(ld_out[target_num],
                      "ld",
                      BUILDDIR + ld_targets[target_num],
-                     implicit=all_objects,
+                     implicit=implicit_inputs,
                      variables={'ldflags':ldflags,'ldmap':ld_map,'ldflags_base':LDFLAGS_BASE})
 
 for i in range(7):

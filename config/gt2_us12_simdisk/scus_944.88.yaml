@@ -34,7 +34,8 @@ options:
     - mainexe_reloc_addrs_exe.txt
 
   undefined_funcs_auto_path: autogen/mainexe_undefined_funcs_auto.txt
-  undefined_syms_auto_path: autogen/mainexe_undefined_syms_auto.txt
+  create_undefined_syms_auto: False
+  #undefined_syms_auto_path: autogen/mainexe_undefined_syms_auto.txt
 
   extensions_path: tools/splat_ext
 

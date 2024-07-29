@@ -33,7 +33,7 @@ options:
     - ovr2_reloc_addrs.txt
 
   undefined_funcs_auto_path: autogen/ovr2_undefined_funcs_auto.txt
-  undefined_syms_auto_path: autogen/ovr2_undefined_syms_auto.txt
+  create_undefined_syms_auto: False
 
   extensions_path: tools/splat_ext
 
