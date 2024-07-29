@@ -58,6 +58,7 @@ gt2_main_task090                            = 0x8005d7d0;
 gt2_unk_intovr_task0                        = 0x8005d80c;
 gt2_main_task0b1100                         = 0x8005d848;
 gt2_main_task0b11                           = 0x8005d8a0;
+gt2_main_task0b030                          = 0x8005d950;
 
 gt2_main_task2001                           = 0x8007ab74;
 gt2_sysinit_task00_dma_vsync                = 0x8007d09c;
