@@ -62,3 +62,4 @@ src/autogen/*
 .vscode/c_cpp_properties.json
 build.ninja
 .ninja_log
+build_progress.txt

@@ -124,6 +124,7 @@ ld_flag_table = []
 ld_out = []
 ovl_split_outputs = []
 all_objects = []
+diff_okay_list = []
 
 # definition for undefined syms path table
 undefined_syms = []
@@ -197,6 +198,7 @@ writer.rule("objcopy", OBJCOPY + " $in $out -O binary")
 writer.rule("diff", "diff $in $built && touch $out")
 # generic copy rule to prep build/
 writer.rule("copy", "cp $in $out")
+writer.rule("postbuild", "python build_post.py | tee build_progress.txt")
 
 # generate actual ninja rules
 writer.build(BINPATH, "ovl_split", BASEOVL, implicit_outputs=ovl_split_outputs)
@@ -253,12 +255,19 @@ for i in range(7):
         INPUTFILE = ELF
         OUTPUT = EXE
         DIFF_OKAY = OUTPUT + ".ok"
+        diff_okay_list.append(DIFF_OKAY)
         writer.build(OUTPUT, "objcopy", INPUTFILE)
         writer.build(DIFF_OKAY, "diff", BASEEXE, variables={'built':OUTPUT},implicit=OUTPUT)
     else:
         INPUTFILE = BUILDDIR + GAME + "_0" + str(i) + ELF_EXT
         OUTPUT = BUILDDIR + GAME + "_0" + str(i) + EXE_EXT
         DIFF_OKAY = OUTPUT + ".ok"
+        diff_okay_list.append(DIFF_OKAY)
         OUTPUT_DIFF = BINPATH + "/" + GAME + "_0" + str(i) + EXE_EXT
         writer.build(OUTPUT, "objcopy", INPUTFILE)
         writer.build(DIFF_OKAY, "diff", OUTPUT_DIFF, variables={'built':OUTPUT},implicit=OUTPUT)
+
+writer.build("build_progress.txt", "postbuild", implicit=diff_okay_list)
+
+writer.rule("regen_ninja", f"{sys.executable} $in > $out")
+writer.build("build.ninja", "regen_ninja", __file__)
