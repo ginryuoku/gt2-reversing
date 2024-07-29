@@ -63,3 +63,4 @@ src/autogen/*
 build.ninja
 .ninja_log
 build_progress.txt
+.ninja_deps

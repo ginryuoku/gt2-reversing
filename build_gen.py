@@ -9,8 +9,8 @@ GAME = "gt2"
 # possible versions: jpbeta, jp10, jp11, us10, us11, us12, eubeta, eu10
 # not all versions are possible.
 REGION_VERSION = "us12"
-# possible values: "arcade", "simdisk".
-# "combined" is unsupported atm. It will be supported for gt1 and for gt2 combined.
+# possible values: "arcade", "simdisk", "single", "yymmdd".
+# "single" is unsupported atm. It will be supported for gt1 and for gt2 combined.
 # yymmdd will also be used for denoting betas/demos that do not resemble retail.
 DISK = "simdisk"
 # unused, but is_demo = 1 means that the title is a demo that does not obey
@@ -74,7 +74,7 @@ UNDEFINED_FUNCS_NAME_AUTO = "_undefined_funcs_auto.txt"
 
 # compiler options. please do not remove leading spaces.
 ASFLAGS = INCOPT + "-march=r3000 -mtune=r3000 -no-pad-sections"
-MASPSXFLAGS = "--aspsx-version=2.81 -G4096" # not sure -G4096 is correct?
+MASPSXFLAGS = "--aspsx-version=2.81 -G0" # not sure -G4096 is correct?
 CFLAGS = (" -O2 -G0 -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fgnu-linker -mgas "
           "-mgpOPT -mgpopt -msoft-float -gcoff -quiet")
 CPPFLAGS = INCOPT + "-lang-c"

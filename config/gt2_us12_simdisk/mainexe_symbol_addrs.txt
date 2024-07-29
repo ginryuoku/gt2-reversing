@@ -60,11 +60,26 @@ gt2_main_task0b1100                         = 0x8005d848;
 gt2_main_task0b11                           = 0x8005d8a0;
 gt2_main_task0b030                          = 0x8005d950;
 
+gt2_main_task02 = 0x800686C8;
+
+gt2_main_spu_mainvol_reset                  = 0x80079dbc;
+gt2_main_spu_mainvol_reset_task0            = 0x80079e2c;
+gt2_main_task00 = 0x80079E64;
+gt2_main_task01_setter = 0x80079EEC;
+gt2_main_spu_task1 = 0x80079EF8;
+gt2_main_spu_ctrlregcpucnt_setter = 0x8007A0E0;
+gt2_main_spu_reverb_out_setter = 0x8007A104;
 gt2_main_task2001                           = 0x8007ab74;
+gt2_main_task03 = 0x8007C43C;
 gt2_sysinit_task00_dma_vsync                = 0x8007d09c;
+gt2_main_task05_sdkevent = 0x8007E8A0;
+gt2_main_task0c_gpu_reg1_op = 0x8007F830;
+gt2_main_task04_pad_config = 0x8007F924;
 gt2_main_task0710                           = 0x8007fe8c;
 gt2_main_task0780                           = 0x8007fec8;
 
+gt2_callback_double_buffer_flip = 0x80080038; 
+gt2_main_task06_char_romadd = 0x800804F8; 
 gt2_init                                    = 0x8008ce08;
 gt2_main_task0a_ovr_func3                   = 0x8008cfe0;
 gt2_main_task0a_ovr_func2                   = 0x8008d0d0;
