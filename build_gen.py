@@ -194,7 +194,7 @@ writer.rule("ld", LD + " $ldflags -T $in -Map $ldmap $ldflags_base -o $out")
 # objcopy .elf to a final exe
 writer.rule("objcopy", OBJCOPY + " $in $out -O binary")
 # compare binaries
-writer.rule("diff", "diff $in $out", deps=EXE)
+writer.rule("diff", "diff $in $built && touch $out")
 # generic copy rule to prep build/
 writer.rule("copy", "cp $in $out")
 
@@ -252,9 +252,13 @@ for i in range(7):
     if i == 0:
         INPUTFILE = ELF
         OUTPUT = EXE
+        DIFF_OKAY = OUTPUT + ".ok"
         writer.build(OUTPUT, "objcopy", INPUTFILE)
+        writer.build(DIFF_OKAY, "diff", BASEEXE, variables={'built':OUTPUT},implicit=OUTPUT)
     else:
         INPUTFILE = BUILDDIR + GAME + "_0" + str(i) + ELF_EXT
         OUTPUT = BUILDDIR + GAME + "_0" + str(i) + EXE_EXT
+        DIFF_OKAY = OUTPUT + ".ok"
+        OUTPUT_DIFF = BINPATH + "/" + GAME + "_0" + str(i) + EXE_EXT
         writer.build(OUTPUT, "objcopy", INPUTFILE)
-#writer.build(BASEEXE, "diff", EXE)
+        writer.build(DIFF_OKAY, "diff", OUTPUT_DIFF, variables={'built':OUTPUT},implicit=OUTPUT)
