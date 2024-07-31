@@ -114,6 +114,7 @@ cpp_targets_autogen_end = ["src/autogen/start.c",
 cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/ovr0/gt2_main_task0.c",
                    "src/ovr0/gt2_show_vendor_bootlogo_task0.c",
+                   "src/ovr0/gt2_sysinit.c",
                    "src/ovr0/gt2_main_task0a_ovr_func1.c"]
 # these stay empty.
 # yes, even ld_flags, because we need to do some command generation to make it work.
