@@ -1,7 +1,7 @@
 #include "common.h"
 
-void gt2_callback_double_buffer_flip();                                  /* extern */
-void func_80085B3C(int*, char*, int*);                      /* extern */
+extern void gt2_callback_double_buffer_flip();                                  /* extern */
+extern void func_80085B3C(int*, char*, int*);                      /* extern */
 extern char D_80011D84;
 extern int D_801697D0;
 extern int D_801F0CE0;
