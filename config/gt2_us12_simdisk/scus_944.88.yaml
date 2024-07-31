@@ -105,4 +105,6 @@ segments:
     align: 4
     subsegments:
       - [0x4DE00, c, autogen/start]
+      - [0x4DEE0, c, start/gt2_main]
+      - [0x4DF18, c, autogen/start_0]
   - [0x99800]

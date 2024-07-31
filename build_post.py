@@ -72,13 +72,16 @@ mainexe_dirs = ["asm/data",
                 "asm/nonmatchings/autogen/ovr0_5",
                 "asm/nonmatchings/autogen/ovr0_6",
                 "asm/nonmatchings/autogen/start",
+                "asm/nonmatchings/autogen/start_0",
                 "asm/ovr0",
                 "assets",
-                "src/ovr0"]
+                "src/ovr0",
+                "src/start"]
 mainexe_ns_dirs = mainexe_dirs
 mainexe_decomped_dirs = ["asm/data",
                          "assets",
-                         "src/ovr0"]
+                         "src/ovr0",
+                         "src/start"]
 mainexe_files = ["./asm/header.s"]
 
 ovr1_dirs = ["asm/nonmatchings/autogen/ovr1",
