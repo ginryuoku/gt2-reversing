@@ -74,7 +74,7 @@ UNDEFINED_FUNCS_NAME_AUTO = "_undefined_funcs_auto.txt"
 
 # compiler options. please do not remove leading spaces.
 ASFLAGS = INCOPT + "-march=r3000 -mtune=r3000 -no-pad-sections"
-MASPSXFLAGS = "--aspsx-version=2.81 -G0" # not sure -G4096 is correct?
+MASPSXFLAGS = "--aspsx-version=2.79 -G0" # not sure -G4096 is correct?
 CFLAGS = (" -O2 -G0 -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fgnu-linker -mgas "
           "-mgpOPT -mgpopt -msoft-float -gcoff -quiet")
 CPPFLAGS = INCOPT + "-lang-c"
@@ -112,7 +112,8 @@ cpp_targets_autogen_end = ["src/autogen/start.c",
                            "src/autogen/ovr0_2.c",
                            "src/autogen/ovr0_3.c",
                            "src/autogen/ovr0_4.c",
-                           "src/autogen/ovr0_5.c"]
+                           "src/autogen/ovr0_5.c",
+                           "src/autogen/ovr0_6.c"]
 # place any actual c files here
 cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/ovr0/gt2_main_task0.c",
