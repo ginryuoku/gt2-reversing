@@ -111,7 +111,8 @@ cpp_targets_autogen_end = ["src/autogen/start.c",
                            "src/autogen/ovr0_1.c",
                            "src/autogen/ovr0_2.c",
                            "src/autogen/ovr0_3.c",
-                           "src/autogen/ovr0_4.c"]
+                           "src/autogen/ovr0_4.c",
+                           "src/autogen/ovr0_5.c"]
 # place any actual c files here
 cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/ovr0/gt2_main_task0.c",
@@ -119,7 +120,8 @@ cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/ovr0/gt2_sysinit.c",
                    "src/ovr0/gt2_main_task0a_ovr_func1.c",
                    "src/ovr0/gt2_main_task0b.c",
-                   "src/ovr0/gt2_main_task0b01_noop_loader.c"]
+                   "src/ovr0/gt2_main_task0b01_noop_loader.c",
+                   "src/ovr0/gt2_vsync_handler.c"]
 # these stay empty.
 # yes, even ld_flags, because we need to do some command generation to make it work.
 splat_targets = []
