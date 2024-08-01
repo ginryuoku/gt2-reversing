@@ -61,7 +61,10 @@ gt2_main_task0b11                           = 0x8005d8a0;
 gt2_main_task0b030                          = 0x8005d950;
 gt2_sysinit_task0                           = 0x8005d9bc;
 gt2_main_task1                              = 0x8005D9F0;
-gt2_main_task2                              = 0x8005DA3C; 
+gt2_main_task2                              = 0x8005DA3C;
+gt2_main_task0b31                           = 0x8005DD68; 
+gt2_main_task0b32                           = 0x8005DE1C; 
+gt2_main_task0b33                           = 0x8005E07C;
 
 gt2_main_task02                             = 0x800686C8;
 
@@ -96,6 +99,7 @@ gt2_sysinit_gte_setup                       = 0x8008BB10;
 VSyncCallback                               = 0x8008BD08;
 ResetCallback                               = 0x8008bc78;
 gt2_init                                    = 0x8008ce08;
+gt2_sysinit_task00                          = 0x8008CE30;
 gt2_main_vol_loader_task1                   = 0x8008CF00;
 gt2_main_vol_loader_task2                   = 0x8008CF64;
 gt2_main_vol_loader_task20                  = 0x8008CFC4;  
