@@ -1,0 +1,2 @@
+gt2_ovr4_sysinit_task00_caller = 0x80010000;
+gt2_ovr4_large_task0 = 0x80010024;

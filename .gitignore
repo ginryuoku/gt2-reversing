@@ -64,3 +64,5 @@ build.ninja
 .ninja_log
 build_progress.txt
 .ninja_deps
+config/gt2_us12_simdisk/mainexe_symbol_addrs_ghidra.txt.c
+.vscode/settings.json

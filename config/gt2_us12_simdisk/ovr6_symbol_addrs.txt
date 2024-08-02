@@ -1,0 +1,3 @@
+gt2_ovr6_callback_task0 = 0x800101B4;
+gt2_ovr6_dctout_callback_task0 = 0x80010250;
+gt2_ovr6_dct_reset_handler = 0x80010A90;
