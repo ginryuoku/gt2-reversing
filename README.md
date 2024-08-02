@@ -9,14 +9,14 @@ Once you have those, place them in `config/gt2_us12_simdisk/orig_bin`. Linux is 
 
 Finally, to actually build, run `python3 build_gen.py > build.ninja`, and then `ninja`. 
 
-The result will be in build/, and consists of seven files: `scus_944.88`, and `gt2_0(1-6).exe`. The build does not currently reassemble the overlays. Rebuilding GT2.OVL does not produce a matching archive; doing that will require far more gzip archaeology and messing with timestamps than I feel is prudent or necessary, especially as GT2 doesn't actually care too much about what's in there, just that it is built correctly (has correct relocations, and the largest overlay does not collide with GT2's start() function).
+The result will be in `build/`, and consists of seven files: `scus_944.88`, and `gt2_0(1-6).exe`. The build does not currently reassemble the overlays. Rebuilding GT2.OVL does not produce a matching archive; doing that will require far more gzip archaeology and messing with timestamps than I feel is prudent or necessary, especially as GT2 doesn't actually care too much about what's in there, just that it is built correctly (has correct relocations, and the largest overlay does not collide with GT2's start() function).
 
 
 ### build triples
 
 Currently, this repo only supports US 1.2, but I do have some preliminary support in the build system for attempting to split, splat and build other versions. The format is as follows:
 
-(game)_(region+version)_(disk)
+`(game)_(region+version)_(disk)`
 
 "game" is obviously 'gt2' for now.
 
