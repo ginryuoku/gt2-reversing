@@ -1,2 +1,16 @@
 gt2_ovr4_sysinit_task00_caller = 0x80010000;
 gt2_ovr4_large_task0 = 0x80010024;
+gt2_ovr4_large_task1 = 0x80011858;
+gt2_ovr4_shared_gt_race_func4_caller0 = 0x80011B0C;
+gt2_ovr4_task000 = 0x80011BE8;
+gt2_ovr4_large_task2_paramswap0 = 0x80011CFC;
+gt2_ovr4_large_task2_paramswap1 = 0x80011D38;
+gt2_ovr4_large_task200 = 0x80011D74;
+gt2_ovr4_large_task20 = 0x80011EC0;
+gt2_ovr4_large_task21 = 0x80012130;
+gt2_ovr4_large_task2 = 0x800121DC;
+gt2_ovr4_task1 = 0x800126BC;
+gt2_ovr4_task001 = 0x800127AC;
+gt2_ovr4_task00 = 0x8001290C;
+gt2_ovr4_task01 = 0x80012B68;
+gt2_ovr4_task0 = 0x80012C00;
