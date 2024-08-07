@@ -116,7 +116,8 @@ cpp_targets_autogen_end = ["src/autogen/start.c",
                            "src/autogen/ovr0_4.c",
                            "src/autogen/ovr0_5.c",
                            "src/autogen/ovr0_6.c",
-                           "src/autogen/ovr0_7.c"]
+                           "src/autogen/ovr0_7.c",
+                           "src/autogen/ovr0_8.c"]
 # place any actual c files here
 cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/ovr0/gt2_main_task0.c",
@@ -126,6 +127,7 @@ cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/ovr0/gt2_main_task0b.c",
                    "src/ovr0/gt2_main_task0b0_car_loader.c",
                    "src/ovr0/gt2_main_task0b01_noop_loader.c",
+                   "src/ovr0/gt2_main_task0b5.c",
                    "src/ovr0/gt2_unknown_task0.c",
                    "src/ovr0/gt2_vsync_handler.c",
                    "src/start/gt2_main.c"]
