@@ -62,7 +62,7 @@ segments:
       - [0x9FC, c, ovr0/gt2_unknown_task0]
       - [0xA28, c, autogen/ovr0_0]
       - [0x102C, c, ovr0/gt2_main_task0b5]
-      - [0x103C, c, autogen/ovr0_1]
+      - [0x103C, c, ovr0/gt2_main_task0b6] #autogen/ovr0_1]
       - [0x1068, c, ovr0/gt2_main_task0b]
       - [0x10C0, c, autogen/ovr0_2]
       - [0x1128, c, ovr0/gt2_vsync_handler]
