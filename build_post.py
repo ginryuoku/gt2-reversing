@@ -66,7 +66,7 @@ ovl_name = []
 mainexe_dirs = ["asm/data",
                 "asm/nonmatchings/autogen/ovr0",
                 "asm/nonmatchings/autogen/ovr0_0",
-#               "asm/nonmatchings/autogen/ovr0_1",
+                "asm/nonmatchings/autogen/ovr0_1",
                 "asm/nonmatchings/autogen/ovr0_2",
                 "asm/nonmatchings/autogen/ovr0_3",
                 "asm/nonmatchings/autogen/ovr0_4",
