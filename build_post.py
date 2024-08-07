@@ -174,7 +174,7 @@ OVR6_NS_COUNT = count_ns("/ovr6_symbol_addrs.txt")
 def count_ms(dirs_list, files=""):
     """Counts matched symbols."""
     matched_symbols = len([1 for x in dirs_list
-                           if x.is_file() and "func_" not in x.name and "jtbl_" not in x.name])
+                           if x.is_file() and "func_800" not in x.name and "jtbl_" not in x.name])
     if files != "":
         matched_symbols += len(files)
     return matched_symbols
