@@ -71,7 +71,7 @@ segments:
       - [0x1068, c, ovr0/gt2_main_task0b]
       - [0x10C0, c, autogen/ovr0_3]
       - [0x1128, c, ovr0/gt2_vsync_handler]
-      - [0x1154, c, autogen/ovr0_4]
+      - [0x1154, c, ovr0/gt2_sysinit_vsync_setup]
       - [0x1198, c, ovr0/gt2_sysinit]
       - [0x1224, c, autogen/ovr0_5]
       - [0x1260, c, ovr0/gt2_main_task078]
