@@ -22,8 +22,9 @@ void gt2_sysinit_task0();                              /* extern */
 void gt2_sysinit_vsync_setup();                        /* extern */
 extern gt2_input_struct D_801F0C70;
 
-void gt2_sysinit(void) {
-    gt2_input_struct * ptr = &D_801F0C70;
+void gt2_sysinit(void)
+{
+  gt2_input_struct *ptr;
     gt2_sysinit_task0();
     ResetCallback();
     gt2_sysinit_vsync_setup();
@@ -32,7 +33,8 @@ void gt2_sysinit(void) {
     InitCARD(0);
     StartCARD();
     _bu_init();
-    PadInitDirect(ptr->pad1, ptr->pad2);
+    ptr = &D_801F0C70;
+    PadInitDirect(ptr->pad1, (&D_801F0C70)->pad2);
     gt2_sysinit_gpu_setup();
     DecDCTReset(0);
     gt2_sysinit_gte_setup();
