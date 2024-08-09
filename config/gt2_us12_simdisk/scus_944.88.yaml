@@ -124,4 +124,7 @@ segments:
       - [0x4DE00, c, autogen/start]
       - [0x4DEE0, c, start/gt2_main]
       - [0x4DF18, c, autogen/start_0]
+      - [0x76174, c, start/gt2_exit]
+      - [0x76190, c, start/gt2_exit_task0]
+      - [0x761FC, c, autogen/start_1]
   - [0x99800]
