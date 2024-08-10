@@ -1,6 +1,6 @@
 #include "common.h"
 
-char * gt2_main_vol_loader_task0 (char *arg0, int arg1)
+char * gt2_ovr0_strchr (char *arg0, int arg1)
 {
   char temp_v0;
 
@@ -11,7 +11,7 @@ char * gt2_main_vol_loader_task0 (char *arg0, int arg1)
     }
   if ((arg1 ^ temp_v0) & 0xFF)
     {
-      return gt2_main_vol_loader_task0 (arg0 + 1, arg1);
+      return gt2_ovr0_strchr (arg0 + 1, arg1);
     }
   return arg0;
 }
