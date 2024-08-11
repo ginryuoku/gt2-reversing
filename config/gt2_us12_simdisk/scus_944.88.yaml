@@ -132,7 +132,7 @@ segments:
       - [0x4E0D4, c, start/gt2_main_shared_gtracemenu_func0]
       - [0x4E108, c, start/gt2_main_task0b110]
       - [0x4E12C, c, autogen/start_2]
-      - [0x4E390, c, start/gt2_main_shared_gt_race_func1]
+      - [0x4E390, c, start/gt2_main_shared_gt_race_get_completion_flag]
       - [0x4E3C0, c, autogen/start_3]
       - [0x4E464, c, start/gt2_main_race_func1]
       - [0x4E49C, c, autogen/start_4]

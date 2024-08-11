@@ -7,7 +7,7 @@ typedef struct
   char data[0x10];
 } unkstruct_8005DB90;
 
-unsigned int gt2_main_shared_gt_race_func1 (unkstruct_8005DB90 *arg0, int arg1)
+unsigned int gt2_main_shared_gt_race_get_completion_flag (unkstruct_8005DB90 *arg0, int arg1)
 {
   unsigned char temp_v0 = arg0->data[arg1 / 2];
   if (arg1 & 1)
