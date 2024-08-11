@@ -15,19 +15,18 @@ The result will be in `build/`, and consists of seven files: `scus_944.88`, and 
 
 Do not try to check out or build the repo on one of your NTFS mountpoints. This can only lead to pain and suffering. WSL2 is some very impressive tooling but there's some things it just can't cope with and apparently due to 64-bit vs. 32-bit inodes, this is one of them. Check out and build the repo inside your actual Linux (I suggest your home directory, so for example `/home/ginryuoku/projects/gt2-reversing`). We have to use some pretty ancient compilers to build the decomp, so please keep this in mind.
 
-Also, since I've recently done all this on Pop OS (similar to Ubuntu), here's what you need to actually run the repo on Ubuntu and Ubuntu-like distros (by default, this is what WSL2 usually gives you):
-- multilib (`dpkg --add-architecture i386`)
-- python-is-python3
-- python3-pip
-- ninja-build
-- build-essential
-- gcc-multilib
-- binutils-mips-linux-gnu
-- libc6:i386
-- libncurses5:i386
-- libstdc++6:i386
+Nenkai summarized the WSL2 environment setup process as follows:
 
-You also need to install `splat64[mips]` and `ninja-syntax` from pip to get the required Python tools.
+* `git clone --recurse-submodules --remote-submodules https://github.com/ginryuoku/gt2-reversing.git` (must be in linux, can access files from windows with \\wsl$)
+* `apt install python3-pip python-is-python3`
+* `python3 -m pip install -U splat64[mips]`
+* `sudo dpkg --add-architecture i386` (fixes cc1 issue, 32bit executables)
+* `apt install libc6:i386 libncurses5:i386 libstdc++6:i386`
+* `apt install binutils-mips-linux-gnu`
+
+This should also work on bare-metal Ubuntu.
+
+Note: you may also need to install `ninja-syntax` from pip to get the build system running.
 
 Arch is pretty similar, though enabling multilib is simpler, and you'll need binutils-mips-linux-gnu from the AUR. You also don't need pip, though I don't recall the exact python system dependencies you need to install. It's not too difficult to figure out from `ethteck/splat`, though. (TODO: find out which packages splat needs on Arch)
 
