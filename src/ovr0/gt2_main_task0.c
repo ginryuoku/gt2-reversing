@@ -16,7 +16,7 @@ void gt2_main_task04_pad_config();                                  /* extern */
 void gt2_main_task06_char_romadd();                                  /* extern */
 void gt2_main_task07();                                /* extern */
 void gt2_main_task08_play_music_a440(int);              /* extern */
-void gt2_main_task09();                                /* extern */
+void gt2_ovr0_vol_gtfs_init();                                /* extern */
 void gt2_main_task0a_ovr_entrypoint();                 /* extern */
 void gt2_main_task0b();                                /* extern */
 extern int D_80011D38;
@@ -36,7 +36,7 @@ void gt2_main_task0(void) {
     gt2_main_task06_char_romadd();
     gt2_main_task07();
     gt2_main_task08_play_music_a440((int*)&D_80011D38);
-    gt2_main_task09();
+    gt2_ovr0_vol_gtfs_init();
     gt2_main_task0a_ovr_entrypoint();
     gt2_main_task0b();
     gt2_main_spu_reverb_out_setter(0xFFF, 0xFFF);

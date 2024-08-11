@@ -1,8 +1,9 @@
+// thanks to entriphy for the solve!
 #include "common.h"
 
-char * gt2_ovr0_strchr (char *arg0, int arg1)
+signed char * gt2_ovr0_strchr (const signed char *arg0, int arg1)
 {
-  char temp_v0;
+  signed char temp_v0;
 
   temp_v0 = *arg0;
   if (temp_v0 == 0)
