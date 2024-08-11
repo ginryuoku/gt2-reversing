@@ -1,7 +1,7 @@
 # gt2-reversing
 RE repo for Gran Turismo 2 (PS1)
 
-To build the repo, you'll need to be running Linux. (WSL2 will probably work. MSYS2 or macOS almost certainly won't!) You'll also need python3 with a working splat installation from pip, a mipsel-compatible bintools (Arch and Debian/Ubuntu have one), and ninja. Finally, once you've checked out the git repo, you'll need to make sure submodules are initialized, since we need a few outside tools to get things working, like maspsx and GTModTools.
+To build the repo, you'll need to be running Linux. (WSL2 should work, with caveats below. MSYS2 or macOS almost certainly won't!) You'll also need python3 with a working splat installation from pip, a mipsel-compatible bintools (Arch and Debian/Ubuntu have one), and ninja. Finally, once you've checked out the git repo, you'll need to make sure submodules are initialized, since we need a few outside tools to get things working, like maspsx and GTModTools.
 
 The first step is to obtain a copy of `SCUS_944.88` and `GT2.OVL` from your copy of the simulation disk from the North American 1.2 (Greatest Hits) release. I use this as the basis for decompilation, since it should be nearly identical to the PAL release, but the infrastructure is intended to be able to decompile any near-final or final release of GT2.
 
@@ -11,6 +11,25 @@ Finally, to actually build, run `python3 build_gen.py > build.ninja`, and then `
 
 The result will be in `build/`, and consists of seven files: `scus_944.88`, and `gt2_0(1-6).exe`. The build does not currently reassemble the overlays. Rebuilding GT2.OVL does not produce a matching archive; doing that will require far more gzip archaeology and messing with timestamps than I feel is prudent or necessary, especially as GT2 doesn't actually care too much about what's in there, just that it is built correctly (has correct relocations, and the largest overlay does not collide with GT2's start() function).
 
+### specific note for WSL2 and Ubuntu in general
+
+Do not try to check out or build the repo on one of your NTFS mountpoints. This can only lead to pain and suffering. WSL2 is some very impressive tooling but there's some things it just can't cope with and apparently due to 64-bit vs. 32-bit inodes, this is one of them. Check out and build the repo inside your actual Linux (I suggest your home directory, so for example `/home/ginryuoku/projects/gt2-reversing`). We have to use some pretty ancient compilers to build the decomp, so please keep this in mind.
+
+Also, since I've recently done all this on Pop OS (similar to Ubuntu), here's what you need to actually run the repo on Ubuntu and Ubuntu-like distros (by default, this is what WSL2 usually gives you):
+- multilib (`dpkg --add-architecture i386`)
+- python-is-python3
+- python3-pip
+- ninja-build
+- build-essential
+- gcc-multilib
+- binutils-mips-linux-gnu
+- libc6:i386
+- libncurses5:i386
+- libstdc++6:i386
+
+You also need to install `splat64[mips]` and `ninja-syntax` from pip to get the required Python tools.
+
+Arch is pretty similar, though enabling multilib is simpler, and you'll need binutils-mips-linux-gnu from the AUR. You also don't need pip, though I don't recall the exact python system dependencies you need to install. It's not too difficult to figure out from `ethteck/splat`, though. (TODO: find out which packages splat needs on Arch)
 
 ### build triples
 
