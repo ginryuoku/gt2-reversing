@@ -129,6 +129,7 @@ segments:
       - [0x4DF4C, c, start/gt2_main_vol_get_file_data_sector_offset]
       - [0x4DF68, c, start/gt2_main_shared_arcaderace_func33]
       - [0x4DF9C, c, autogen/start_0]
+      - [0x4E0A0, c, start/gt2_main_task0b11]
       - [0x4E0D4, c, start/gt2_main_shared_gtracemenu_func0]
       - [0x4E108, c, start/gt2_main_task0b110]
       - [0x4E12C, c, start/gt2_main_shared_racegtarcade_func6]
