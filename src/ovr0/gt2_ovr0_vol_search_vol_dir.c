@@ -8,13 +8,13 @@ typedef struct {
     char name[25];
 } gt2_vol_entry;
 
-extern gt2_vol_entry D_800A97D0[17920]; // All vol files - 0x8C000 / 0x20?
+extern gt2_vol_entry gt2_vol_buffer[280 * 0x800]; // All vol files - 0x8C000 / 0x20?
     
 gt2_vol_entry* gt2_ovr0_vol_search_vol_dir(char* path, gt2_vol_entry* vol_entry) { // gt2_main_vol_loader
 
     char buffer[0x100];
     
-    gt2_vol_entry* root = D_800A97D0;
+    gt2_vol_entry* root = gt2_vol_buffer;
     char next = path[1];
    
     if (*(signed char*)path == '/')
@@ -47,7 +47,7 @@ gt2_vol_entry* gt2_ovr0_vol_search_vol_dir(char* path, gt2_vol_entry* vol_entry)
         if (!vol_entry)
             return NULL;
 
-        vol_entry = &D_800A97D0[current_entry->next_dir_or_file_index];
+        vol_entry = &gt2_vol_buffer[current_entry->next_dir_or_file_index];
     }
 
     while (1)

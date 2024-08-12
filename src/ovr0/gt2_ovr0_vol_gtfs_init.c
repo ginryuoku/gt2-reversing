@@ -12,28 +12,34 @@ typedef struct
 {
     unsigned int magic;
     unsigned int empty;
-    short count1;
-    short count2;
+    unsigned short file_data_count;
+    unsigned short file_entry_count;
     unsigned int reserved;
-    unsigned int field_10;
-    unsigned int field_14;
+    // array of file offset (encoded int) 
+    // - [0] is always refering to main header
+    // - [1] is expected to be offset to file entries
+    // - [2..] is where data starts
+    // pad to 0x800
+    // array of file entries (gt2_vol_entry)
+    // pad to 0x800
+    // data starts
 } gt2_gtfs_header;
 
-extern unsigned char D_800A97D0[0x8C000]; // gt2_vol_buffer - This is used as a buffer. first for the vol header, then for the vol entries
-extern unsigned char D_801E35F0[0xC000];  // gt2_vol_header_ptr - points to gt2_gtfs_header structure
+extern unsigned char gt2_vol_buffer[280 * 0x800]; // gt2_vol_buffer - This is used as a buffer. first for the vol header, then for the vol entries
+extern unsigned char gt2_vol_header_ptr[24 * 0x800];  // gt2_vol_header_ptr - points to gt2_gtfs_header structure
 extern int D_801E3604; // D_801E35F0 + 0x14 = offset of file infos
 
 void gt2_main_cd_read(unsigned char* data, int sector_offset, int size);  /* extern */
 void gt2_ovr0_vol_assign_file_indices_unk();                              /* extern */ // gt2_main_vol_assign_file_indices_unk
 
 void gt2_ovr0_vol_gtfs_init(void) { // gt2_main_vol_gtfs_init
-    gt2_main_cd_read(D_800A97D0, 0, sizeof(D_800A97D0)); // gt2_main_cd_read(u8* data, sector_offset lba, int size);
+    gt2_main_cd_read(gt2_vol_buffer, 0, sizeof(gt2_vol_buffer)); // gt2_main_cd_read(u8* data, sector_offset lba, int size);
 
     // copy vol header from vol buffer into header buffer
-    memcpy(&D_801E35F0, (void*)D_800A97D0, sizeof(D_801E35F0));
+    memcpy(&gt2_vol_header_ptr, (void*)gt2_vol_buffer, sizeof(gt2_vol_header_ptr));
 
     // copy vol file entries into vol buffer (using count in header)
-    memcpy(D_800A97D0, (void*)D_800A97D0 + (D_801E3604 & 0xFFFFF800), sizeof(D_800A97D0));
+    memcpy(gt2_vol_buffer, (void*)gt2_vol_buffer + (D_801E3604 & 0xFFFFF800), sizeof(gt2_vol_buffer));
     
     gt2_ovr0_vol_assign_file_indices_unk(); // gt2_main_vol_assign_file_indices_unk
 }
