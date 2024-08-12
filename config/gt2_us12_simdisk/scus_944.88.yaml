@@ -146,4 +146,6 @@ segments:
       - [0x76174, c, start/gt2_exit]
       - [0x76190, c, start/gt2_exit_task0]
       - [0x761FC, c, autogen/start_6]
+      - [0x7D7C4, c, start/gt2_main_strlen]
+      - [0x7D7E0, c, autogen/start_7]
   - [0x99800]
