@@ -1,12 +1,6 @@
 // thanks to Nenkai for solving this one
 #include "common.h"
-
-typedef struct {
-    int date_time;
-    unsigned short next_dir_or_file_index;
-    unsigned char  entry_flags; // 0x00 = file, 0x01 = dir, 0x80 = end of dir
-    char name[25];
-} gt2_vol_entry;
+#include "structs.h"
 
 extern gt2_vol_entry gt2_vol_buffer[280 * 0x800]; // All vol files - 0x8C000 / 0x20?
     

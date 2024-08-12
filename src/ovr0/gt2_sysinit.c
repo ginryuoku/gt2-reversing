@@ -1,11 +1,6 @@
 // DO NOT REACTIVATE - NONMATCHING
 #include "common.h"
-
-typedef struct {
-    char padding1[0x28];
-    char pad1[0x22];
-    char pad2[0x22];
-} gt2_input_struct;
+#include "structs.h"
 
 void CdInit();                                         /* extern */
 void DecDCTReset(int);                                   /* extern */

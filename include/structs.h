@@ -13,7 +13,7 @@ typedef struct {
 
 typedef struct {
     int date_time;
-    short next_dir_or_file_index;
+    unsigned short next_dir_or_file_index;
     unsigned char  entry_flags; // 0x00 = file, 0x01 = dir, 0x80 = end of dir
     char name[25];
 } gt2_vol_entry;
@@ -35,3 +35,9 @@ typedef struct
     // pad to 0x800
     // data starts
 } gt2_gtfs_header;
+
+typedef struct {
+    char padding1[0x28];
+    char pad1[0x22];
+    char pad2[0x22];
+} gt2_input_struct;
