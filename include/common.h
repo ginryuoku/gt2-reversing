@@ -5,5 +5,6 @@
 
 #define NULL 0
 #define GTFS_SECTOR_OFFSET(packed_value) (packed_value >> 11)
+#define GTFS_FILEINFO_FLAG_DIRECTORY(file_info_flags) (file_info_flags & 1)
 
 #endif /* COMMON_H */
