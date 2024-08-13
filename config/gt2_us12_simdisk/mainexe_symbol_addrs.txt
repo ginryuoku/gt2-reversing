@@ -46,7 +46,8 @@ gt2_main_task0b10 = 0x80011B70;
 gt2_main_task0b1 = 0x80011C70; 
 gt2_main_task0b2 = 0x80011CE4;
 
-str_gt2_ovl_name = 0x80011d30;
+str_gt2_ovl_name = 0x80011D30;
+str_gt2_vendor_bootlogo = 0x80011D84;
 
 start = 0x8005D600; 
 gt2_main = 0x8005D6E0; 

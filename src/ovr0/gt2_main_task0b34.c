@@ -1,6 +1,6 @@
 #include "common.h"
 
-extern int gt2_sysinit_task00 (char *, int, int); /* extern */
+extern int gt2_sysinit_task00 (int *, int, int); /* extern */
 
 typedef struct
 {

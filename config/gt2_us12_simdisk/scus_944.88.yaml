@@ -25,7 +25,7 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
 
-  section_order: [".rodata", ".text", ".data", ".bss"]
+  section_order: [".text", ".rodata", ".data", ".bss"]
   # auto_all_sections: [".data", ".rodata", ".bss"]
 
   symbol_addrs_path:
@@ -92,7 +92,7 @@ segments:
       - [0x2370, c, autogen/ovr0_7]
       - [0x24E4, c, ovr0/gt2_main_task0b2]
 
-  - name: rodata
+  - name: ovr0_rodata
     type: data
     start: 0x2530
     vram: 0x80011D30
@@ -110,13 +110,13 @@ segments:
     vram: 0x8002422C
     align: 4
 
-  - name: rodata2
+  - name: ovr0_rodata2
     type: rodata
     start: 0x245A0
     vram: 0x80033DA0
     align: 4
 
-  - name: padding
+  - name: ovr0_padding
     type: data
     start: 0x245F0
     vram: 0x80033DF0
