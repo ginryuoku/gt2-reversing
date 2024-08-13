@@ -91,30 +91,10 @@ segments:
       - [0x233C, c, ovr0/gt2_ovr0_strchr]
       - [0x2370, c, autogen/ovr0_7]
       - [0x24E4, c, ovr0/gt2_main_task0b2]
-
-  - name: ovr0_rodata
-    type: data
-    start: 0x2530
-    vram: 0x80011D30
-    align: 4
-  
-  - name: notice.tim.gz
-    type: bin
-    start: 0x25F8
-    vram: 0x80011DF8
-    align: 4
-
-  - name: logo-scea.tim.gz
-    type: bin
-    start: 0x23A2C
-    vram: 0x8002422C
-    align: 4
-
-  - name: ovr0_rodata2
-    type: rodata
-    start: 0x245A0
-    vram: 0x80033DA0
-    align: 4
+      - [0x2530, rodata, ovr0_rodata]
+      - [0x25F8, bin, notice.tim.gz]
+      - [0x23A2C, bin, logo-scea.tim.gz]
+      - [0x245A0, data, ovr0_data]
 
   - name: ovr0_padding
     type: data
