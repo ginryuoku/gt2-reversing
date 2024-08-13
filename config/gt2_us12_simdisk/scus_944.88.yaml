@@ -92,32 +92,37 @@ segments:
       - [0x2370, c, autogen/ovr0_7]
       - [0x24E4, c, ovr0/gt2_main_task0b2]
 
-  - name: data
+  - name: rodata
     type: data
     start: 0x2530
     vram: 0x80011D30
     align: 4
-    subsegments:
-      - [0x2530, data, rodata-pt1]
   
-  - name: textures
+  - name: notice.tim.gz
     type: bin
     start: 0x25F8
     vram: 0x80011DF8
     align: 4
-    subsegments:
-      - [0x25F8, bin, notice.tim.gz]
-      - [0x23A2C, bin, logo-scea.tim.gz]
 
-  - name: data2
-    type: data
+  - name: logo-scea.tim.gz
+    type: bin
+    start: 0x23A2C
+    vram: 0x8002422C
+    align: 4
+
+  - name: rodata2
+    type: rodata
     start: 0x245A0
     vram: 0x80033DA0
     align: 4
-    subsegments:
-      - [0x245A0, data, rodata-pt2]
 
-  - name: bootstrap
+  - name: padding
+    type: data
+    start: 0x245F0
+    vram: 0x80033DF0
+    align: 4
+
+  - name: gt2main
     type: code
     start: 0x4DE00
     vram: 0x8005D600
