@@ -87,6 +87,8 @@ LD = CROSS + "ld -EL"
 OBJCOPY = CROSS + "objcopy"
 CPP = "tools/gcc2.8.1-mipsel/cpp"
 CC = "tools/homebrew-psyq44/cc1"
+CPP46 = "tools/gcc2.95.2-mipsel/cpp"
+CC46 = "tools/gcc2.95.2-mipsel/cc1"
 PYTHON_EXE = "python"
 OVL_SPLIT_EXE = "tools/GTModTools/ovl.py"
 MASPSX_EXE = " tools/maspsx/maspsx.py "
@@ -139,7 +141,6 @@ cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/ovr0/gt2_show_vendor_bootlogo_task0.c",
                    "src/ovr0/gt2_sysinit.c",
                    "src/ovr0/gt2_sysinit_vsync_setup.c",
-                   "src/ovr0/gt2_main_task075.c",
                    "src/ovr0/gt2_main_task078.c",
                    "src/ovr0/gt2_main_task0800.c",
                    "src/ovr0/gt2_main_task0a_ovr_func1.c",
@@ -177,6 +178,7 @@ cpp_targets_end = ["src/ovr0/gt2_main_task0a_ovr_entrypoint.c",
                    "src/start/gt2_main.c",
                    "src/start/gt2_exit.c",
                    "src/start/gt2_exit_task0.c"]
+cpp_targets_46 = ["src/ovr0/gt2_main_task075.c"]
 # these stay empty.
 # yes, even ld_flags, because we need to do some command generation to make it work.
 splat_targets = []
@@ -230,6 +232,7 @@ for i in range(7):
 splat_targets_path = [BASEPATH + "/" + s for s in splat_targets]
 ld_targets_path = [BASEPATH + "/autogen/" + s for s in ld_targets]
 cpp_targets = cpp_targets_autogen + cpp_targets_autogen_end + cpp_targets_end
+cpp46_targets = cpp_targets_46
 
 # command invocations for rules
 OVL_SPLIT_CMD = PYTHON_EXE + " " + OVL_SPLIT_EXE + " unpack -o $out $in"
@@ -238,7 +241,8 @@ ASSET_CMD = LD + " -r -b binary -o $out $in"
 SPLAT_CMD = SPLAT + " split $in"
 CPP_CMD = CPP + CPPFLAGS + " $in | " + CC + CFLAGS + \
           PIPE + MASPSX + PIPE + AS + ASFLAGS + " -o $out"
-
+CPP46_CMD = CPP46 + CPPFLAGS + " $in | " + CC46 + CFLAGS + \
+          PIPE + MASPSX + PIPE + AS + ASFLAGS + " -o $out"
 # invoke ninja's writer
 writer = ninja_syntax.Writer(sys.stdout)
 
@@ -253,6 +257,8 @@ writer.rule("ovl_split", OVL_SPLIT_CMD)
 writer.rule("asset", ASSET_CMD)
 # builds C files into objects
 writer.rule("cpp", CPP_CMD, depfile="$out.asmproc.d")
+# builds C files into objects (using 2.95.2)
+writer.rule("cpp46", CPP46_CMD, depfile="$out.asmproc.d")
 # links objects into final elf files
 writer.rule("ld", LD + " $ldflags -T $in -Map $ldmap $ldflags_base -o $out")
 # objcopy .elf to a final exe
@@ -303,6 +309,12 @@ for filename in cpp_targets:
     OUTPUT = BUILDDIR + filename + O_EXT
     all_objects.append(OUTPUT)
     writer.build(OUTPUT, "cpp", filename)
+
+for filename in cpp46_targets:
+    target_num = cpp46_targets.index(filename)
+    OUTPUT = BUILDDIR + filename + O_EXT
+    all_objects.append(OUTPUT)
+    writer.build(OUTPUT, "cpp46", filename)
 
 for filename in ld_targets_path:
     target_num = ld_targets_path.index(filename)
