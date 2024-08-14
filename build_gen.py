@@ -148,6 +148,7 @@ cpp_targets_autogen_end = [
     "src/autogen/start_6.c",
     "src/autogen/start_7.c",
     "src/autogen/start_8.c",
+    "src/autogen/start_9.c",
     "src/autogen/ovr0_0.c",
     "src/autogen/ovr0_1.c",
     "src/autogen/ovr0_2.c",
@@ -156,11 +157,7 @@ cpp_targets_autogen_end = [
     "src/autogen/ovr0_5.c",
     "src/autogen/ovr0_6.c",
     "src/autogen/ovr0_7.c",
-]  # ,
-#                           "src/autogen/ovr0_8.c",
-#                           "src/autogen/ovr0_9.c",
-#                           "src/autogen/ovr0_A.c",
-#                           "src/autogen/ovr0_B.c"]
+]
 # place any actual c files here
 cpp_targets_end = [
     # verified only works on 2.8.1
@@ -208,6 +205,7 @@ cpp_targets_46 = [
     "src/start/gt2_unknown_nop4.c",
     "src/start/gt2_sysinit_task0.c",
     "src/start/gt2_main_race_func1.c",
+    "src/start/gt2_main_race_switch_func12.c",
     "src/start/gt2_main_shared_gt_race_get_completion_flag.c",
     "src/start/gt2_main_strlen.c",
     "src/start/gt2_main.c",
