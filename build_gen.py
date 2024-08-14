@@ -83,9 +83,10 @@ UNDEFINED_FUNCS_NAME_AUTO = "_undefined_funcs_auto.txt"
 ASFLAGS = INCOPT + "-march=r3000 -mtune=r3000 -no-pad-sections"
 MASPSXFLAGS = "--aspsx-version=2.79 -G0"  # not sure -G4096 is correct?
 CFLAGS = (
-    " -O2 -G0 -fpeephole -ffunction-cse -fpcc-struct-return -fcommon -fgnu-linker -mgas "
-    "-mgpOPT -mgpopt -msoft-float -gcoff -quiet"
+    " -O2 -G0 -fpeephole -ffunction-cse -fkeep-static-consts -fpcc-struct-return -fcommon"
+    " -fgnu-linker -msplit-addresses -mgas -mgpOPT -mgpopt -msoft-float -gcoff -quiet"
 )
+CFLAGS46 = CFLAGS + " -fargument-alias -fident"
 CPPFLAGS = INCOPT + "-lang-c"
 LDFLAGS_BASE = " --no-check-sections -nostdlib"
 
@@ -149,6 +150,7 @@ cpp_targets_autogen_end = [
     "src/autogen/start_7.c",
     "src/autogen/start_8.c",
     "src/autogen/start_9.c",
+    #    "src/autogen/start_10.c",
     "src/autogen/ovr0_0.c",
     "src/autogen/ovr0_1.c",
     "src/autogen/ovr0_2.c",
@@ -205,6 +207,7 @@ cpp_targets_46 = [
     "src/start/gt2_unknown_nop4.c",
     "src/start/gt2_sysinit_task0.c",
     "src/start/gt2_main_race_func1.c",
+    "src/start/gt2_main_race_func2.c",
     "src/start/gt2_main_race_switch_func12.c",
     "src/start/gt2_main_shared_gt_race_get_completion_flag.c",
     "src/start/gt2_main_strlen.c",
@@ -296,6 +299,7 @@ CPP46_CMD = (
     + " $in | "
     + CC46
     + CFLAGS
+    + CFLAGS46
     + PIPE
     + MASPSX
     + PIPE
