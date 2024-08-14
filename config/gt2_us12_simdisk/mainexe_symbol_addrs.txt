@@ -1,3 +1,4 @@
+// ovr0 text
 gt2_main_task0a_ovr_func0 = 0x80010000;
 gt2_main_task0a_ovr_entrypoint = 0x800100C0; 
 gt2_ovr0_vol_search_vol_dir = 0x800100E4; 
@@ -45,10 +46,10 @@ gt2_ovr0_strchr = 0x80011B3C;
 gt2_main_task0b10 = 0x80011B70; 
 gt2_main_task0b1 = 0x80011C70; 
 gt2_main_task0b2 = 0x80011CE4;
-
+// ovr0 rodata
 str_gt2_ovl_name = 0x80011D30;
 str_gt2_vendor_bootlogo = 0x80011D84;
-
+// gt2main text
 start = 0x8005D600; 
 gt2_main = 0x8005D6E0; 
 gt2_main_shared_arcaderace_func32 = 0x8005D718; 
@@ -1164,6 +1165,6 @@ strncmp = 0x8008DFD4;
 bzero = 0x8008DFE4;
 printf = 0x8008DFF4;
 puts = 0x8008E00C;
-
+// gt2main rodata
 gt2_vol_buffer = 0x800A97D0;
 gt2_vol_header_ptr = 0x801E35F0;
