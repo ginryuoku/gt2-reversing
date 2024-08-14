@@ -1,3 +1,4 @@
+// builds only with GCC 2.8.1
 #include "common.h"
 
 int gt2_unknown_task0(char* arg0) {

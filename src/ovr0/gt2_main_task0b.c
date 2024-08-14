@@ -1,3 +1,4 @@
+// builds only with GCC 2.8.1
 #include "common.h"
 
 extern void gt2_main_task0b0_car_loader();                    /* extern */

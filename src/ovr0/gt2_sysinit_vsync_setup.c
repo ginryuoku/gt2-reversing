@@ -1,4 +1,5 @@
 // thanks to mono21400 for removing the redundant do{} and finding the volatile int
+// builds only with GCC 2.8.1
 #include "common.h"
 
 extern void VSyncCallback(int*);                                /* extern */

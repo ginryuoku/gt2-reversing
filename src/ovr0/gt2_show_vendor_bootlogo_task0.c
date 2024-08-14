@@ -1,3 +1,4 @@
+// builds only with GCC 2.8.1
 #include "common.h"
 
 extern void gt2_callback_double_buffer_flip();                                  /* extern */

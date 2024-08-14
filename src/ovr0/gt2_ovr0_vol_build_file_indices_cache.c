@@ -1,4 +1,5 @@
 // Thanks to nenkai for the solve!
+// builds only with GCC 2.8.1
 #include "common.h"
 #include "structs.h"
 

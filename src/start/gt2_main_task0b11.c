@@ -1,3 +1,4 @@
+// builds only with GCC 2.8.1
 #include "common.h"
 
 void gt2_main_task0b110(unsigned short);                          /* extern */

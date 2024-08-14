@@ -1,3 +1,4 @@
+// builds only with GCC 2.8.1
 #include "common.h"
 
 extern int gt2_sysinit_task00 (int *, int, int); /* extern */

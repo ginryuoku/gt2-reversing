@@ -1,3 +1,4 @@
+// builds only with GCC 2.8.1
 #include "common.h"
 
 extern unsigned int gt2_main_shared_racegtarcade_func60;
