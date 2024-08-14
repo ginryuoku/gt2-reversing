@@ -103,7 +103,15 @@ ELF = EXE + ".elf"
 asm_targets = ["asm/header.s",
                "asm/data/ovr0_rodata.rodata.s",
                "asm/data/ovr0_data.data.s",
-               "asm/data/ovr0_padding.data.s"]
+               "asm/data/ovr0_padding.data.s",
+               "asm/data/gt2main0.rodata.s",
+               "asm/data/gt2main1.rodata.s",
+               "asm/data/gt2main2.rodata.s",
+               "asm/data/gt2main3.rodata.s",
+               "asm/data/gt2main4.rodata.s",
+               "asm/data/gt2main5.rodata.s",
+               "asm/data/gt2main.data.s",               
+               ]
 # place binary targets here (likely the textures for OVR0)
 bin_targets = ["assets/notice.tim.gz.bin",
                "assets/logo-scea.tim.gz.bin"]
