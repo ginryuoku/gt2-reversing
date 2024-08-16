@@ -2,7 +2,7 @@
 
 # import os
 import sys
-import ninja_syntax
+from tools import ninja_syntax
 
 
 # possible values: gt1, gt2, gt2k. only gt2 is supported for now.
