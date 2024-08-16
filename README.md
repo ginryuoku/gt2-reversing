@@ -26,9 +26,15 @@ Nenkai summarized the WSL2 environment setup process as follows:
 
 This should also work on bare-metal Ubuntu.
 
-Note: you may also need to install `ninja-syntax` from pip to get the build system running.
+### what you need for Gentoo and Arch
 
-Arch is pretty similar, though enabling multilib is simpler, and you'll need binutils-mips-linux-gnu from the AUR. You also don't need pip, though I don't recall the exact python system dependencies you need to install. It's not too difficult to figure out from `ethteck/splat`, though. (TODO: find out which packages splat needs on Arch)
+Gentoo is a bit fussy, and so is Arch. 
+
+For splat: On Ubuntu you can sort of get around pip whining because they patched it for less user-hostility, but you're stuck with using `pipx` on Arch and Gentoo to install splat. 
+
+For multilib: Arch needs `[multilib]` enabled. I'm not sure what packages need `x86_abi_32`, strictly speaking, on Gentoo, but installing Steam seems to provide enough 32-bit libraries to make it work. Wine would probably also work. You probably just need a 32-bit glibc, libstdc++ and ncurses (`x86_abi_32`) in practice.
+
+For binutils: We provide two compilers out of the box (technically three, but one is just there to provide a cpp binary), but we don't provide a binutils, because a modern binutils will do. On Arch, you install binutils from the AUR as `binutils-mips-linux-gnu`. On Gentoo, you need to install crossdev, and then `crossdev -s0 --target mips-linux-gnu` gets you your binutils. I have absolutely no idea whatsoever if actually building to s4 would get you a viable PS1 compiler, but I strongly doubt it. Just use `-s0` to get yourself a binutils without the other baggage.
 
 ### build triples
 
