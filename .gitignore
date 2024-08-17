@@ -59,6 +59,7 @@ config/gt2_us12_simdisk/autogen
 assets/
 *.ld
 src/autogen/*
+src/lib/*
 .vscode/c_cpp_properties.json
 build.ninja
 .ninja_log

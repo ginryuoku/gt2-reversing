@@ -276,9 +276,14 @@ overall_dcs_fc = (
 
 def print_symbols(name, count, ns_count, ms_fc, dcs_fc):
     """Pretty printer for our progress calculations."""
+
+    if ns_count > count:
+        ns_count = count
+
     prg_ns = ns_count / count
     prg_ms = ms_fc / count
     prg_dcs = dcs_fc / count
+
 
     if prg_ns > 0:
         print(f"{name}: named symbols:      {ns_count} / {count} ( {prg_ns:2.2%} )")

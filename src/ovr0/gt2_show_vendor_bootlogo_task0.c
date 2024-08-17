@@ -3,7 +3,7 @@
 
 extern void gt2_callback_double_buffer_flip();                                  /* extern */
 extern void gt2_main_flip_double_buffers(int *, char *, int *); /* extern */
-extern char str_gt2_vendor_bootlogo;
+const char str_gt2_vendor_bootlogo[] = "14VendorBootLogo";
 extern int D_801697D0;
 extern int D_801F0CE0;
 
