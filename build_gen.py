@@ -151,7 +151,7 @@ cpp_targets_autogen_end = [
     "src/autogen/start_7.c",
     "src/autogen/start_8.c",
     "src/autogen/start_9.c",
-    #    "src/autogen/start_10.c",
+    "src/autogen/start_10.c",
     "src/autogen/ovr0_0.c",
     "src/autogen/ovr0_1.c",
     "src/autogen/ovr0_2.c",
