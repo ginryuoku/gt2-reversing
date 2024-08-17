@@ -212,6 +212,7 @@ cpp_targets_46 = [
     "src/start/gt2_main_race_switch_func12.c",
     "src/start/gt2_main_shared_gt_race_get_completion_flag.c",
     "src/start/gt2_main_strlen.c",
+    "src/start/gt2_main_task1.c",
     "src/start/gt2_main.c",
     "src/start/gt2_exit.c",
 ]
