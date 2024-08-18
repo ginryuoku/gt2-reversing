@@ -192,6 +192,7 @@ cpp_targets_end = [
     "src/start/gt2_main_task0b11.c",
     "src/start/gt2_main_task0b110.c",
     "src/start/gt2_main_race_func7.c",
+    "src/start/gt2_main_race_func8.c",
     "src/start/gt2_main_shared_gtracemenu_func0.c",
     "src/start/gt2_main_shared_arcaderace_func32.c",
     "src/start/gt2_main_shared_arcaderace_func33.c",
