@@ -160,7 +160,8 @@ cpp_targets_autogen_end = [
     "src/autogen/start_16.c",
     "src/autogen/start_17.c",   
     "src/autogen/start_18.c",
-    "src/autogen/start_19.c", 
+    "src/autogen/start_19.c",
+    "src/autogen/start_20.c",
     "src/autogen/ovr0_0.c",
     "src/autogen/ovr0_1.c",
     "src/autogen/ovr0_2.c",
@@ -198,6 +199,7 @@ cpp_targets_end = [
     "src/start/gt2_main_shared_arcaderace_func32.c",
     "src/start/gt2_main_shared_arcaderace_func33.c",
     "src/start/gt2_main_shared_racegtarcade_func6.c",
+    "src/start/gt2_main_strcpy_slim.c",
     "src/start/gt2_exit_task0.c",
 ]
 cpp_targets_46 = [
@@ -234,11 +236,12 @@ cpp_targets_46 = [
     "src/start/gt2_main_shared_gt_race_func05_nop.c",
     "src/start/gt2_main_shared_gt_race_get_completion_flag.c",
     "src/start/gt2_main_strlen.c",
-    "src/start/gt2_sysinit_task00_caller_94.c",
-    "src/start/gt2_sysinit_task00_caller_15a5c.c",
+    "src/start/gt2_memset_caller_94.c",
+    "src/start/gt2_memset_caller_15a5c.c",
     "src/start/gt2_main_task1.c",
     "src/start/gt2_main_task031_nop_zero.c",
     "src/start/gt2_main_task032_nop.c",
+    "src/start/gt2_main_task0a_ovr_memcpy.c",
     "src/start/gt2_main.c",
     "src/start/gt2_exit.c",
 ]
