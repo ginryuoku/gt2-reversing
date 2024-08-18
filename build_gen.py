@@ -236,6 +236,7 @@ cpp_targets_46 = [
     "src/start/gt2_main_shared_gt_race_func05_nop.c",
     "src/start/gt2_main_shared_gt_race_get_completion_flag.c",
     "src/start/gt2_main_strlen.c",
+    "src/start/gt2_main_strcpy.c",
     "src/start/gt2_memset_caller_94.c",
     "src/start/gt2_memset_caller_15a5c.c",
     "src/start/gt2_main_task1.c",
