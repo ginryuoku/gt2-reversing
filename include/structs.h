@@ -580,3 +580,18 @@ typedef struct {
     s32 unkC;
 } struct_1c945c;
 
+typedef struct
+{
+    int ra;
+    int sp;
+    int fp;
+    int s0;
+    int s1;
+    int s2;
+    int s3;
+    int s4;
+    int s5;
+    int s6;
+    int s7;
+    int gp;
+} gt2_saved_registers;
