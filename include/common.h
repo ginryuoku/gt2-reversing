@@ -8,5 +8,6 @@
 #define GTFS_FILEINFO_FLAG_DIRECTORY(file_info_flags) (file_info_flags & 1)
 
 typedef signed int s32;
+typedef unsigned int u32;
 
 #endif /* COMMON_H */
