@@ -595,3 +595,14 @@ typedef struct
     int s7;
     int gp;
 } gt2_saved_registers;
+
+typedef struct {
+    short pad0[0xBDA];
+    short unk17B4;
+    short pad1[0x3];
+    short unk17BC;
+    short pad2[0xD];
+    short unk17D8;
+    short unk17DA;
+    short unk17DC;
+} struct_race_setter;
