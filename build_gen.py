@@ -237,7 +237,7 @@ cpp_targets_46 = [
     "src/start/gt2_main_shared_gt_race_get_completion_flag.c",
     "src/start/gt2_main_strlen.c",
     "src/start/gt2_main_strcpy.c",
-    "src/start/gt2_memset_caller_94.c",
+    "src/start/gt2_memset_caller_ovr5.c",
     "src/start/gt2_memset_caller_15a5c.c",
     "src/start/gt2_main_task1.c",
     "src/start/gt2_main_task031_nop_zero.c",
@@ -245,6 +245,7 @@ cpp_targets_46 = [
     "src/start/gt2_main_task0a_ovr_memcpy.c",
     "src/start/gt2_main.c",
     "src/start/gt2_exit.c",
+    "src/start/gt2_init.c",
 ]
 # these stay empty.
 # yes, even ld_flags, because we need to do some command generation to make it work.
