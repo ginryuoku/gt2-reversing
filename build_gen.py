@@ -131,6 +131,7 @@ asm_targets = [
     "asm/data/gt2main7.rodata.s",
     "asm/data/gt2main8.rodata.s",
     "asm/data/gt2main9.rodata.s",
+    "asm/data/gt2main10.rodata.s",
     "asm/data/gt2main.data.s",
 ]
 # place binary targets here (likely the textures for OVR0)
@@ -165,6 +166,8 @@ cpp_targets_autogen_end = [
     "src/autogen/start_21.c",
     "src/autogen/start_22.c",
     "src/autogen/start_23.c",
+    "src/autogen/start_24.c",
+    "src/autogen/start_25.c",
     "src/autogen/ovr0_0.c",
     "src/autogen/ovr0_1.c",
     "src/autogen/ovr0_2.c",
@@ -198,6 +201,7 @@ cpp_targets_end = [
     "src/start/gt2_main_task0b110.c",
     "src/start/gt2_main_race_func7.c",
     "src/start/gt2_main_race_func8.c",
+#    "src/start/gt2_main_race_switch_func0.c",
     "src/start/gt2_main_shared_gtracemenu_func0.c",
     "src/start/gt2_main_shared_arcaderace_func32.c",
     "src/start/gt2_main_shared_arcaderace_func33.c",
@@ -232,6 +236,7 @@ cpp_targets_46 = [
     "src/start/gt2_main_race_func1.c",
     "src/start/gt2_main_race_func2.c",
     "src/start/gt2_main_race_func4.c",
+    "src/start/gt2_main_race_func16_001.c",
     "src/start/gt2_main_race_func16_20.c",
     "src/start/gt2_main_race_func41_0.c",
     "src/start/gt2_main_race_setter0.c",
