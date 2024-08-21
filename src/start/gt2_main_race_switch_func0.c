@@ -80,8 +80,11 @@ int gt2_main_race_switch_func0(gt2_race_entry* entry, gt2_race_part_type part_ty
             break;
         case 22:
             result = entry->entries22_1[index];
+            #ifdef MATCHING
             asm("nop");
-            // break;
+            #else
+            break;
+            #endif
         default:
             return result;
     }
@@ -90,4 +93,6 @@ int gt2_main_race_switch_func0(gt2_race_entry* entry, gt2_race_part_type part_ty
 }
 
 // HACK HACK HACK
+#ifdef MATCHING
 static const int padding = 0;
+#endif
