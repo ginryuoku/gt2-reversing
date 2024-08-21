@@ -1,10 +1,11 @@
 // Thanks to Nenkai for the structure and most of the solve,
 // and thanks to karas84 for accepting the inevitable and inserting
 // a nop to make GCC 2.8.1 (2.95.2 is a no-go) happy.
+// Thanks also to Ethan for telling me about the static int padding trick.
+// FIXME: remove all this bizarre padding horseshit once we start supporting
+// nonmatching/shiftable builds.
 #include "common.h"
 #include "structs.h"
-
-//INCLUDE_RODATA()
 
 int gt2_main_race_switch_func0(gt2_race_entry* entry, gt2_race_part_type part_type, int index, int default_value) {
 
@@ -87,3 +88,6 @@ int gt2_main_race_switch_func0(gt2_race_entry* entry, gt2_race_part_type part_ty
 
     return result;
 }
+
+// HACK HACK HACK
+static const int padding = 0;

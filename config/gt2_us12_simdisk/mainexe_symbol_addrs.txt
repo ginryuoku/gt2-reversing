@@ -103,7 +103,6 @@ gt2_main_switch_func0 = 0x8005E93C;
 gt2_main_race_switch_func10 = 0x8005E99C; 
 gt2_main_race_switch_func12 = 0x8005EAA4; 
 gt2_main_shared_gt_race_func3 = 0x8005EAC0; 
-gt2_main_shared_gt_race_func30 = 0x8005EE30; 
 gt2_main_race_switch_func0 = 0x8005EE4C; 
 gt2_main_shared_gt_race_func5 = 0x8005F044; 
 gt2_main_shared_gt_race_func6 = 0x8005F410; 
