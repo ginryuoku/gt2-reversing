@@ -1,0 +1,71 @@
+name: SCES_123.80
+sha1: 5172a19c1d0fe07a2a61966653b755afe26d9e69
+options:
+  basename: sces_123.80
+  target_path: orig_bin/SCES_123.80
+  base_path: .
+  platform: psx
+  compiler: GCC
+
+  asm_path: ../../asm
+  src_path: ../../src
+  build_path: ../../build
+  asset_path: ../../assets
+  create_asm_dependencies: True
+
+  ld_script_path: autogen/sces_123.80.ld
+
+  find_file_boundaries: False
+  gp_value: 0x00000000
+
+  o_as_suffix: False
+  use_legacy_include_asm: False
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+
+  section_order: [".text", ".rodata", ".data", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+
+  symbol_addrs_path:
+    - mainexe_symbol_addrs.txt
+  reloc_addrs_path:
+    - mainexe_reloc_addrs_exe.txt
+
+  undefined_funcs_auto_path: autogen/mainexe_undefined_funcs_auto.txt
+  create_undefined_syms_auto: False
+  undefined_syms_auto_path: autogen/mainexe_undefined_syms_auto.txt
+
+  migrate_rodata_to_functions: True
+
+  extensions_path: tools/splat_ext
+
+  subalign: 4
+
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: ovr0
+    type: code
+    start: 0x800
+    vram: 0x80010000
+    align: 4
+    subsegments:
+      - [0x800, asm, ovr0] # estimated
+      - [0x2518, data, ovr0] # estimated
+
+  - name: gt2main
+    type: code
+    start: 0x4DE40
+    vram: 0x8005D640
+    align: 4
+    subsegments:
+      - [0x4DE40, asm, gt2main]
+  - [0x99800]

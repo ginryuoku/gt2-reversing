@@ -56,6 +56,9 @@ build/
 config/gt2_us12_simdisk/orig_bin
 config/gt2_us12_simdisk/ovl_bin
 config/gt2_us12_simdisk/autogen
+config/gt2_eu10_simdisk/orig_bin
+config/gt2_eu10_simdisk/ovl_bin
+config/gt2_eu10_simdisk/autogen
 assets/
 *.ld
 src/autogen/*
