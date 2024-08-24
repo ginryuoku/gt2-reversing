@@ -138,6 +138,8 @@ mainexe_dirs = [
     "asm/nonmatchings/autogen/start_54",
     "asm/nonmatchings/autogen/start_55",
     "asm/nonmatchings/autogen/start_56",
+    "asm/nonmatchings/autogen/start_57",
+    "asm/nonmatchings/autogen/start_58",
     "src/autogen/ovr0",
     "src/autogen/start",
     "src/ovr0",
