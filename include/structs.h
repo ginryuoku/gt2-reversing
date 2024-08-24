@@ -597,7 +597,9 @@ typedef struct
 } gt2_saved_registers;
 
 typedef struct {
-    short pad0[0xBDA];
+    short pad0[0xBD8];
+    short unk17B0;
+    short unk17B2;
     short unk17B4;
     short pad1[0x3];
     short unk17BC;
