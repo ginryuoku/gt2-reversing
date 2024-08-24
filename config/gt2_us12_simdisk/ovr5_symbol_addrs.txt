@@ -39,6 +39,7 @@ gt2_ovr5_get_aspiration = 0x8001B2F8;
 gt2_ovr5_get_valvetrain = 0x8001B338;
 gt2_ovr5_get_display_name_for_current_car = 0x8001B818;
 gt2_ovr5_get_stat_widget_display_value = 0x8001B9AC;
+gt2_ovr5_ui_can_buy_caller0 = 0x8001DFEC;
 gt2_ovr5_display_text_on_screen = 0x8001FBEC;
 gt2_ovr5_format_power = 0x8001FFCC;
 gt2_ovr5_format_speed = 0x80020054;
@@ -48,3 +49,5 @@ gt2_ovr5_get_used_car_list_details = 0x800206F8;
 gt2_ovr5_decompress_data_gt_txd = 0x80020C50;
 gt2_ovr5_get_event_data = 0x80021A6C;
 gt2_ovr5_get_main_car_part_number_by_car_id = 0x80021B0C;
+
+gt2_garages_ptr = 0x801CD554;

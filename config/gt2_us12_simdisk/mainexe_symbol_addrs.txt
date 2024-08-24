@@ -1146,3 +1146,4 @@ puts = 0x8008E00C;
 // gt2main rodata
 gt2_vol_buffer = 0x800A97D0;
 gt2_vol_header_ptr = 0x801E35F0;
+gt2_garages_ptr = 0x801CD554;
