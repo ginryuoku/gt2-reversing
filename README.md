@@ -48,3 +48,14 @@ Currently, this repo only supports US 1.2, but I do have some preliminary suppor
 
 "disk" is one of four things, though only "simdisk" is supported for now. they are "arcade", "simdisk", "single" and a yymmdd date code. the date code is for prototype titles that aren't close enough to retail to be analyzed in the same manner. "single" is for GT1, GT2K and presumably the combined disk once this repo is capable of building *new* variations of GT2, not just perfectly match Polyphony's binaries from November and December 1999.
 
+### licenses
+
+If it's not in tools/ or include/*.asm, it's almost certainly under LICENSE.md (CC0).
+
+I'm not entirely sure what the license is for the GTE macros or the splat asm macros. Probably MIT. The .h includes are ours, so CC0.
+
+For tools: the tools are licensed under their respective Git submodule licenses.
+
+ninja_syntax comes from the ninja repo, so it falls under their license. It is present for convenience, as a recent version of ninja_syntax is not available on PyPi.
+
+The compilers are old versions of GCC, obtained from github decompals/old-gcc. homebrew-psyq44 is from github nocato/homebrew-psyq. All of these are licensed under GPL 2.0, and are not altered by the repo maintainer in any way.
