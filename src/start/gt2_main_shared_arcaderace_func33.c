@@ -2,10 +2,10 @@
 #include "common.h"
 
 void gt2_main_task0b2101 (unsigned short); /* extern */
-extern unsigned short D_801E2EF0;
+extern unsigned short gt2_vol_cached_dir_indices[];
 
 void
 gt2_main_shared_arcaderace_func33 (int arg0)
 {
-  gt2_main_task0b2101 (*((arg0) + &D_801E2EF0));
+  gt2_main_task0b2101 (gt2_vol_cached_dir_indices[arg0]);
 }
