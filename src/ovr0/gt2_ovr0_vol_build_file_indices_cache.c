@@ -5,7 +5,7 @@
 
 extern char* D_8009118C[248]; // gt2_vol_used_dirs
 extern int gt2_vol_buffer;   // gt2_vol_buffer
-extern unsigned short D_801E2EF0;   // gt2_vol_cached_dir_indices
+unsigned short D_801E2EF0[256];   // gt2_vol_cached_dir_indices
 
 void gt2_ovr0_vol_build_file_indices_cache(void) { // gt2_main_vol_build_file_indices_cache
     char** path_ptr = D_8009118C;

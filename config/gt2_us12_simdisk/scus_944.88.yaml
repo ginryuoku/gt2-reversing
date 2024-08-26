@@ -116,11 +116,12 @@ segments:
       - [0x25F8, bin, notice.tim.gz]
       - [0x23A2C, bin, logo-scea.tim.gz]
       - [0x245A0, data, ovr0_data]
+      - [0x245F0, .bss, ovr0/gt2_ovr0_vol_build_file_indices_cache]
 
   - name: ovr0_padding
-    type: data
-    start: 0x245F0
-    vram: 0x80033DF0
+    type: bss
+    start: 0x247F0
+    vram: 0x80033FF0
     align: 4
 
   - name: gt2main

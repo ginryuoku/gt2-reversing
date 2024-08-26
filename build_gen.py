@@ -115,7 +115,7 @@ asm_targets = [
     "asm/data/ovr0_0.rodata.s",
     "asm/data/ovr0_1.rodata.s",
     "asm/data/ovr0_data.data.s",
-    "asm/data/ovr0_padding.data.s",
+    "asm/data/ovr0_padding.bss.s",
     "asm/data/gt2main0.rodata.s",
     "asm/data/gt2main1.rodata.s",
     "asm/data/gt2main2.rodata.s",
