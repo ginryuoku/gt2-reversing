@@ -99,7 +99,7 @@ mainexe_dirs = [
     "asm/nonmatchings/autogen/start_15",
     "asm/nonmatchings/autogen/start_16",
     "asm/nonmatchings/autogen/start_17",
-    "asm/nonmatchings/autogen/start_18",    
+    "asm/nonmatchings/autogen/start_18",
     "asm/nonmatchings/autogen/start_19",
     "asm/nonmatchings/autogen/start_20",
     "asm/nonmatchings/autogen/start_21",
@@ -144,6 +144,8 @@ mainexe_dirs = [
     "asm/nonmatchings/autogen/start_60",
     "asm/nonmatchings/autogen/start_61",
     "asm/nonmatchings/autogen/start_62",
+    "asm/nonmatchings/autogen/start_63",
+    "asm/nonmatchings/autogen/start_64",
     "src/autogen/ovr0",
     "src/autogen/start",
     "src/ovr0",
@@ -336,7 +338,6 @@ def print_symbols(name, count, ns_count, ms_fc, dcs_fc):
     prg_ns = ns_count / count
     prg_ms = ms_fc / count
     prg_dcs = dcs_fc / count
-
 
     if prg_ns > 0:
         print(f"{name}: named symbols:      {ns_count} / {count} ( {prg_ns:2.2%} )")
