@@ -225,6 +225,7 @@ segments:
       - [0x644FC, c, autogen/start_30]
       - [0x64530, c, start/gt2_main_race_func23]
       - [0x6454C, c, autogen/start_31]
+      - [0x663F4, c, start/gt2_main_race_func2F]
       - [0x66414, c, start/gt2_main_race_func30]
       - [0x66434, c, start/gt2_unknown_taskC]
       - [0x66454, c, autogen/start_32]

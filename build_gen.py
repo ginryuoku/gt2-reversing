@@ -236,6 +236,7 @@ cpp_targets_end = [
     "src/start/gt2_main_race_func7.c",
     "src/start/gt2_main_race_func8.c",
     "src/start/gt2_main_race_func20.c",
+    "src/start/gt2_main_race_func2F.c",
     "src/start/gt2_main_race_func30.c",
     "src/start/gt2_main_race_switch_func0.c",
     "src/start/gt2_main_shared_gt_race_func02.c",
