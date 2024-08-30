@@ -72,7 +72,7 @@ ovl_split_outputs = []
 ovl_name = []
 
 # USER-EDITABLE: how many splits are present?
-target_splits = [5, 0, 0, 0, 0, 0, 0, 73]
+target_splits = [5, 0, 0, 0, 0, 0, 0, 74]
 
 mainexe_dirs = [
     "asm/nonmatchings/autogen/ovr0",
