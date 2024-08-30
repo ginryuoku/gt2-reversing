@@ -320,7 +320,7 @@ segments:
       - [0x7D700, c, autogen/start_68]
       - [0x7D764, c, start/gt2_main_strcpy]
       - [0x7D7C4, c, start/gt2_main_strlen]
-      - [0x7D7E0, c, start/gt2_main_task0a_ovr_memcpy]
+      - [0x7D7E0, c, start/gt2_main_memcpy]
       - [0x7D820, c, autogen/start_69]
       - [0x7D980, c, start/gt2_main_arcade_func0]
       - [0x7D994, c, autogen/start_70]

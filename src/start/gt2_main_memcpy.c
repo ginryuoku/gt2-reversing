@@ -3,7 +3,7 @@
 #include "common.h"
 
 // NOTE: >=2.91 match only
-u8* gt2_main_task0a_ovr_memcpy(u8* dest, u8* src, s32 len)
+u8* gt2_main_memcpy(u8* dest, u8* src, s32 len)
 {
     u8* cur;
     int i = len - 1;

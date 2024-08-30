@@ -318,7 +318,7 @@ cpp_targets_46 = [
     "src/start/gt2_main_task200112.c",
     "src/start/gt2_main_task031_nop_zero.c",
     "src/start/gt2_main_task032_nop.c",
-    "src/start/gt2_main_task0a_ovr_memcpy.c",
+    "src/start/gt2_main_memcpy.c",
     "src/start/gt2_main.c",
     "src/start/gt2_exit.c",
     "src/start/gt2_init.c",
