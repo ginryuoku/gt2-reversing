@@ -1,0 +1,5 @@
+gt2_ovr1_main_task2_caller0 = 0x80012254;
+gt2_ovr1_fxpoint_multi12_caller0 = 0x80039994; 
+gt2_ovr1_memset_u8 = 0x8003FDE0; 
+gt2_ovr1_memset_u32 = 0x8003FE14; 
+gt2_ovr1_memset_u16 = 0x8003FE4C;

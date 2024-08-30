@@ -1,3 +1,5 @@
 gt2_ovr6_callback_task0 = 0x800101B4;
 gt2_ovr6_dctout_callback_task0 = 0x80010250;
+gt2_ovr6_memset_caller0 = 0x80010610; 
+gt2_ovr6_memset_caller1 = 0x80010950; 
 gt2_ovr6_dct_reset_handler = 0x80010A90;

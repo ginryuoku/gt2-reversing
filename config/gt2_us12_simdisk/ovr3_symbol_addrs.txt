@@ -1,0 +1,8 @@
+gt2_ovr3_arcaderace_func16_caller0 = 0x80011C48; 
+gt2_ovr3_arcaderace_func16_caller1 = 0x80011D74;
+gt2_ovr3_strlen_caller00 = 0x800185C8;
+gt2_ovr3_strlen_caller0 = 0x8001A18C; 
+gt2_ovr3_strlen_caller01 = 0x8001AC5C;
+gt2_ovr3_memset_caller0 = 0x80025EAC; 
+gt2_ovr3_memset_caller1 = 0x800261EC; 
+gt2_ovr3_DecDCTReset_caller0 = 0x8002632C; 
