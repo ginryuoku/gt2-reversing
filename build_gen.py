@@ -236,8 +236,6 @@ cpp_targets_end = [
     "src/start/gt2_main_race_func7.c",
     "src/start/gt2_main_race_func8.c",
     "src/start/gt2_main_race_func20.c",
-    "src/start/gt2_main_race_func2F.c",
-    "src/start/gt2_main_race_func30.c",
     "src/start/gt2_main_race_switch_func0.c",
     "src/start/gt2_main_shared_gt_race_func02.c",
     "src/start/gt2_main_shared_gtracemenu_func0.c",
@@ -248,7 +246,9 @@ cpp_targets_end = [
     "src/start/gt2_main_shared_racegtarcade_func6.c",
     "src/start/gt2_main_strcpy_slim.c",
     "src/start/gt2_exit_task0.c",
-    "src/start/gt2_unknown_taskC.c",
+    "src/start/gt2_fxpoint_multi8.c",
+    "src/start/gt2_fxpoint_multi12.c",
+    "src/start/gt2_fxpoint_multi16.c",
 ]
 cpp_targets_46 = [
     # verified
