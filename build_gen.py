@@ -326,6 +326,7 @@ cpp_targets_46 = [
     "src/start/gt2_main.c",
     "src/start/gt2_exit.c",
     "src/start/gt2_init.c",
+    "src/start/__builtin_delete.c",
 ]
 # these stay empty.
 # yes, even ld_flags, because we need to do some command generation to make it work.
