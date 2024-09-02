@@ -14,7 +14,7 @@ void gt2_sysinit_task00_dma_vsync();                                  /* extern 
 void gt2_main_task05_sdkevent();                                  /* extern */
 void gt2_main_task0c_gpu_reg1_op(int);                                 /* extern */
 void gt2_main_task04_pad_config();                                  /* extern */
-void gt2_main_task06_char_romadd();                                  /* extern */
+void gt2_bios_set_kanji_font_table();                                  /* extern */
 void gt2_main_task07();                                /* extern */
 void gt2_ovr0_task08_play_music_a440(int);              /* extern */
 void gt2_ovr0_vol_gtfs_init();                                /* extern */
@@ -34,7 +34,7 @@ void gt2_ovr0_task0(void) {
     gt2_main_task03();
     gt2_main_task04_pad_config();
     gt2_main_task05_sdkevent();
-    gt2_main_task06_char_romadd();
+    gt2_bios_set_kanji_font_table();
     gt2_main_task07();
     gt2_ovr0_task08_play_music_a440((int*)&D_80011D38);
     gt2_ovr0_vol_gtfs_init();

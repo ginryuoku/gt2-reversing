@@ -273,6 +273,7 @@ segments:
       - [0x70634, c, autogen/start_50]
       - [0x70838, c, autogen/start/gt2_callback_double_buffer_flip]
       - [0x70888, c, autogen/start_51]
+      - [0x70CF8, c, start/gt2_bios_set_kanji_font_table]
       - [0x70D1C, c, autogen/start/gt2_main_shared_racemenuarcade_func430]
       - [0x71020, c, autogen/start_52]
       - [0x71494, c, start/gt2_main_sharedovr_func15_nop]
