@@ -72,7 +72,7 @@ ovl_split_outputs = []
 ovl_name = []
 
 # USER-EDITABLE: how many splits are present?
-target_splits = [5, 0, 0, 0, 0, 0, 0, 78]
+target_splits = [5, -1, -1, -1, -1, 16, -1, 78]
 
 mainexe_dirs = [
     "asm/nonmatchings/autogen/ovr0",
@@ -82,13 +82,6 @@ mainexe_dirs = [
     "src/ovr0",
     "src/start",
 ]
-
-if target_splits[0] > 0:
-    for idx in range(target_splits[0] + 1):
-        mainexe_dirs.append("asm/nonmatchings/autogen/" + "ovr0_" + str(idx))
-if target_splits[7] > 0:
-    for idx in range(target_splits[7] + 1):
-        mainexe_dirs.append("asm/nonmatchings/autogen/start_" + str(idx))
 
 mainexe_ns_dirs = mainexe_dirs
 mainexe_decomped_dirs = ["src/ovr0", "src/start"]
@@ -120,8 +113,8 @@ ovr4_dirs = [
 ovr4_decomped_dirs = ["src/ovr4"]
 ovr5_dirs = [
     "asm/nonmatchings/autogen/ovr5",
-    # "asm/ovr5",
-    # "src/ovr5"
+    "src/autogen/ovr5",
+    "src/ovr5"
 ]
 ovr5_decomped_dirs = ["src/ovr5"]
 ovr6_dirs = [
@@ -131,6 +124,15 @@ ovr6_dirs = [
 ]
 ovr6_decomped_dirs = ["src/ovr6"]
 
+if target_splits[0] >= 0:
+    for idx in range(target_splits[0] + 1):
+        mainexe_dirs.append("asm/nonmatchings/autogen/" + "ovr0_" + str(idx))
+if target_splits[5] >= 0:
+    for idx in range(target_splits[5] + 1):
+        ovr5_dirs.append("asm/nonmatchings/autogen/" + "ovr5_" + str(idx))
+if target_splits[7] >= 0:
+    for idx in range(target_splits[7] + 1):
+        mainexe_dirs.append("asm/nonmatchings/autogen/start_" + str(idx))
 
 def make_directory_list(dirs):
     """Makes a directory list object for further parsing."""
@@ -173,9 +175,13 @@ def count_ns(symbol_addr_filename):
     filepath = BASEPATH + symbol_addr_filename
     if os.path.isfile(filepath) is True:
         with open(filepath, encoding="utf-8") as f:
+            stop_count = False
             for line in f:
+                if "// mainexe symbols" in line:
+                    stop_count = True
                 if (
-                    "//" not in line
+                    stop_count is False
+                    and "//" not in line
                     and not line.isspace()
                     and "str_" not in line
                     and "gt2_vol_" not in line
@@ -271,8 +277,9 @@ overall_dcs_fc = (
 def print_symbols(name, count, ns_count, ms_fc, dcs_fc):
     """Pretty printer for our progress calculations."""
 
-    if ns_count > count:
-        ns_count = count
+    if name == "main_exe":
+        if ns_count > count:
+            ns_count = count
 
     prg_ns = ns_count / count
     prg_ms = ms_fc / count
