@@ -128,6 +128,9 @@ asm_targets = [
     "asm/data/autogen/ovr5_03.rodata.s",
     "asm/data/autogen/ovr5_04.rodata.s",
     "asm/data/autogen/ovr5_05.rodata.s",
+    "asm/data/autogen/ovr6_00.rodata.s",
+    "asm/data/autogen/ovr6_01.rodata.s",
+    "asm/data/autogen/ovr6_02.rodata.s",
     "asm/data/gt2main0.rodata.s",
     "asm/data/gt2main1.rodata.s",
     "asm/data/gt2main2.rodata.s",
@@ -236,6 +239,7 @@ cpp_targets_autogen_end = [
     "src/autogen/ovr5/gt2_ovr5_is_international_league.c",
     "src/autogen/ovr5/gt2_ovr5_is_gt_world_cup.c",
     "src/autogen/ovr5/gt2_ovr5_ui_can_buy_caller0.c",
+    "src/autogen/ovr6/func_8001151C.c",
 ]
 # place any actual c files here
 cpp_targets_end = [

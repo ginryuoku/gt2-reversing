@@ -24,7 +24,7 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
 
-  section_order: [".rodata", ".text", ".data", ".bss"]
+  section_order: [".text", ".rodata", ".data", ".bss"]
   # auto_all_sections: [".data", ".rodata", ".bss"]
 
   symbol_addrs_path:
@@ -34,6 +34,9 @@ options:
 
   undefined_funcs_auto_path: autogen/ovr6_undefined_funcs_auto.txt
   create_undefined_syms_auto: False
+
+  pair_rodata_to_text: True
+  migrate_rodata_to_functions: True
 
   extensions_path: tools/splat_ext
 
@@ -51,4 +54,9 @@ segments:
     align: 4
     subsegments:
       - [0x0, c, autogen/ovr6]
+      - [0x151C, c, autogen/ovr6/func_8001151C]
+      - [0x156C, rodata, autogen/ovr6_00]
+      - [0x15BC, .rodata, autogen/ovr6/func_8001151C]
+      - [0x15CC, rodata, autogen/ovr6_01]
+      - [0x20CC, rodata, autogen/ovr6_02]
   - [0x20E0]

@@ -37,7 +37,7 @@ options:
   create_undefined_syms_auto: False
 
   pair_rodata_to_text: True
-#  migrate_rodata_to_functions: True
+  migrate_rodata_to_functions: True
 
   extensions_path: tools/splat_ext
 
