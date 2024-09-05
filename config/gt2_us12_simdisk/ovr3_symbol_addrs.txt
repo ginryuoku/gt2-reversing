@@ -1,3 +1,5 @@
+gt2_ovr3_max3 = 0x80010074;
+gt2_ovr3_min3 = 0x800100B0;
 gt2_ovr3_arcaderace_func16_caller0 = 0x80011C48; 
 gt2_ovr3_arcaderace_func16_caller1 = 0x80011D74;
 gt2_ovr3_strlen_caller00 = 0x800185C8;

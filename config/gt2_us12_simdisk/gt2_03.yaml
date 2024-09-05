@@ -51,4 +51,7 @@ segments:
     align: 4
     subsegments:
       - [0x0, c, autogen/ovr3]
+      - [0x74, c, ovr3/gt2_ovr3_max3]
+      - [0xB0, c, ovr3/gt2_ovr3_min3]
+      - [0xEC, c, autogen/ovr3_0]
   - [0x43544]

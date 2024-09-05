@@ -72,7 +72,7 @@ ovl_split_outputs = []
 ovl_name = []
 
 # USER-EDITABLE: how many splits are present?
-target_splits = [5, -1, -1, -1, -1, 16, -1, 77]
+target_splits = [5, -1, -1, 0, 0, 17, -1, 77]
 
 mainexe_dirs = [
     "asm/nonmatchings/autogen/ovr0",
@@ -95,19 +95,19 @@ ovr1_dirs = [
 ovr1_decomped_dirs = ["src/ovr1"]
 ovr2_dirs = [
     "asm/nonmatchings/autogen/ovr2",
-    # "asm/ovr2",
-    # "src/ovr2"
+#    "src/autogen/ovr2",
+    "src/ovr2"
 ]
 ovr2_decomped_dirs = ["src/ovr2"]
 ovr3_dirs = [
     "asm/nonmatchings/autogen/ovr3",
-    # "asm/ovr3",
-    # "src/ovr3"
+#    "src/autogen/ovr3",
+    "src/ovr3"
 ]
 ovr3_decomped_dirs = ["src/ovr3"]
 ovr4_dirs = [
     "asm/nonmatchings/autogen/ovr4",
-    # "asm/ovr4",
+    "src/autogen/ovr4",
     "src/ovr4"
 ]
 ovr4_decomped_dirs = ["src/ovr4"]
@@ -129,22 +129,22 @@ if target_splits[0] >= 0:
         mainexe_dirs.append("asm/nonmatchings/autogen/" + "ovr0_" + str(idx))
 if target_splits[1] >= 0:
     for idx in range(target_splits[1] + 1):
-        ovr5_dirs.append("asm/nonmatchings/autogen/" + "ovr1_" + str(idx))
+        ovr1_dirs.append("asm/nonmatchings/autogen/" + "ovr1_" + str(idx))
 if target_splits[2] >= 0:
     for idx in range(target_splits[2] + 1):
-        ovr5_dirs.append("asm/nonmatchings/autogen/" + "ovr2_" + str(idx))
+        ovr2_dirs.append("asm/nonmatchings/autogen/" + "ovr2_" + str(idx))
 if target_splits[3] >= 0:
     for idx in range(target_splits[3] + 1):
-        ovr5_dirs.append("asm/nonmatchings/autogen/" + "ovr3_" + str(idx))
+        ovr3_dirs.append("asm/nonmatchings/autogen/" + "ovr3_" + str(idx))
 if target_splits[4] >= 0:
     for idx in range(target_splits[4] + 1):
-        ovr5_dirs.append("asm/nonmatchings/autogen/" + "ovr4_" + str(idx))
+        ovr4_dirs.append("asm/nonmatchings/autogen/" + "ovr4_" + str(idx))
 if target_splits[5] >= 0:
     for idx in range(target_splits[5] + 1):
         ovr5_dirs.append("asm/nonmatchings/autogen/" + "ovr5_" + str(idx))
 if target_splits[6] >= 0:
     for idx in range(target_splits[6] + 1):
-        ovr5_dirs.append("asm/nonmatchings/autogen/" + "ovr6_" + str(idx))
+        ovr6_dirs.append("asm/nonmatchings/autogen/" + "ovr6_" + str(idx))
 if target_splits[7] >= 0:
     for idx in range(target_splits[7] + 1):
         mainexe_dirs.append("asm/nonmatchings/autogen/start_" + str(idx))

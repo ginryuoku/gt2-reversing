@@ -50,5 +50,7 @@ segments:
     vram: 0x80010000
     align: 4
     subsegments:
-      - [0x0, c, autogen/ovr2]
+      - [0x0, c, ovr2/gt2_ovr2_max3]
+      - [0x3C, c, ovr2/gt2_ovr2_min3]
+      - [0x78, c, autogen/ovr2]
   - [0x3C8C4]

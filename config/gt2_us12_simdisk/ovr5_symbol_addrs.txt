@@ -1,5 +1,7 @@
 gt2_ovr5_load_license_task0 = 0x80010000; 
 gt2_ovr5_load_license = 0x80010078;
+gt2_ovr5_max3 = 0x80010550;
+gt2_ovr5_min3 = 0x8001058C;
 gt2_ovr5_load_replay_mode_04_task00 = 0x800105C8; 
 gt2_ovr5_load_replay_mode_04_task0 = 0x80010714; 
 gt2_ovr5_load_replay_mode_04_task1 = 0x80010984; 

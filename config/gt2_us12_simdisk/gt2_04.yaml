@@ -52,4 +52,7 @@ segments:
     subsegments:
       - [0x0, c, ovr4/gt2_ovr4_memset_caller]
       - [0x24, c, autogen/ovr4]
+      - [0x1CFC, c, ovr4/gt2_ovr4_max3]
+      - [0x1D38, c, ovr4/gt2_ovr4_min3]
+      - [0x1D74, c, autogen/ovr4_0]
   - [0x2CEC]
