@@ -108,7 +108,7 @@ ovr3_decomped_dirs = ["src/ovr3"]
 ovr4_dirs = [
     "asm/nonmatchings/autogen/ovr4",
     # "asm/ovr4",
-    # "src/ovr4"
+    "src/ovr4"
 ]
 ovr4_decomped_dirs = ["src/ovr4"]
 ovr5_dirs = [

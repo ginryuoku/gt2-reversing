@@ -298,6 +298,7 @@ cpp_targets_46 = [
     "src/ovr0/gt2_main_task0b30.c",
     "src/ovr0/gt2_ovr0_strchr.c",
     "src/ovr0/gt2_unknown_task1.c",
+    "src/ovr4/gt2_ovr4_memset_caller.c",
     "src/start/gt2_unknown_nop0.c",
     "src/start/gt2_unknown_nop1.c",
     "src/start/gt2_unknown_nop2.c",
