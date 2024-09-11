@@ -15,7 +15,7 @@ gt2_ovr4_task00 = 0x8001290C;
 gt2_ovr4_task01 = 0x80012B68;
 gt2_ovr4_task0 = 0x80012C00;
 // mainexe symbols
-gt2_main_task20 = 0x8005DA7C;
+gt2_load_overlay = 0x8005DA7C;
 gt2_main_shared_arcaderace_func6 = 0x8005E548;
 gt2_main_shared_arcaderace_func8 = 0x8005E5F0;
 gt2_main_shared_gt_race_func3 = 0x8005EAC0; 

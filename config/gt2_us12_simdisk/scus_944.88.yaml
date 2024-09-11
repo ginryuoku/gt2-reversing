@@ -143,7 +143,7 @@ segments:
       - [0x4E150, c, autogen/start_1]
       - [0x4E1BC, c, start/gt2_sysinit_task0]
       - [0x4E1F0, c, start/gt2_main_task1]
-      - [0x4E23C, c, start/gt2_main_task2]
+      - [0x4E23C, c, start/gt2_load_overlay_default]
       - [0x4E27C, c, autogen/start_2]
       - [0x4E390, c, start/gt2_main_shared_gt_race_get_completion_flag]
       - [0x4E3C0, c, autogen/start_3]
