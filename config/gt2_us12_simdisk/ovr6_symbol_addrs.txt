@@ -50,8 +50,8 @@ gt2_ovr6_task6 = 0x80011314;
 gt2_ovr6_task10 = 0x80011328; 
 gt2_ovr6_task30 = 0x800113A8; 
 gt2_ovr6_task31 = 0x80011430; 
-gt2_ovr6_task1 = 0x800114B8; 
-gt2_ovr6_task3 = 0x800114E0; 
+gt2_ovr6_entrypoint0 = 0x800114B8; 
+gt2_ovr6_exit_to_menu = 0x800114E0; 
 gt2_ovr6_task4 = 0x8001151C;
 // mainexe symbols
 start = 0x8005D600; 

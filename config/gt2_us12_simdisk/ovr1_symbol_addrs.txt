@@ -1,4 +1,8 @@
-gt2_ovr1_main_task2_caller0 = 0x80012254;
+gt2_ovr1_main_task0780_caller0 = 0x80011EFC; 
+gt2_ovr1_entrypoint = 0x80011F64; 
+gt2_ovr1_load_global_menu_overlay = 0x80012254; 
+gt2_ovr1_main_task0780_caller00 = 0x800157FC; 
+gt2_ovr1_main_task077_caller = 0x80015824; 
 gt2_ovr1_fxpoint_multi12_caller0 = 0x80039994; 
 gt2_ovr1_memset_u8 = 0x8003FDE0; 
 gt2_ovr1_memset_u32 = 0x8003FE14; 

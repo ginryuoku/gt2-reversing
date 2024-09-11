@@ -1,3 +1,7 @@
 gt2_ovr2_max3 = 0x80010000;
 gt2_ovr2_min3 = 0x8001003C;
+gt2_ovr2_entrypoint0 = 0x80011384; 
+gt2_ovr2_start_replay = 0x8001172C; 
+gt2_ovr2_main_task0710_caller0 = 0x80011B5C; 
+gt2_ovr2_main_task0780_caller0 = 0x80011B90; 
 gt2_ovr2_unk_intovr_task0002_caller0 = 0x80012434;

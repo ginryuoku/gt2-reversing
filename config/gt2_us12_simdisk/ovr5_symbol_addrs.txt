@@ -11,6 +11,7 @@ gt2_ovr5_load_event_task4 = 0x80011160;
 gt2_ovr5_load_event_task5 = 0x80011184; 
 gt2_ovr5_load_event_task6 = 0x800129B8; 
 gt2_ovr5_load_event = 0x80012C6C;
+gt2_ovr5_entrypoint0 = 0x80013628;
 gt2_ovr5_load_car_model_display_info = 0x80014348;
 gt2_ovr5_memset_caller0 = 0x80015404; 
 gt2_ovr5_get_part_upgrade_stages = 0x80016C5C;
