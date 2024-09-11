@@ -88,9 +88,9 @@ CFLAGS = (
 )
 CFLAGS46 = CFLAGS + " -fargument-alias -fident"
 CPPFLAGS = INCOPT + "-lang-c"
-CPPFLAGS_CPLUS = INCOPT = "-lang-c++"
-CFLAGS44_CPLUS = CFLAGS + " -x c++ -fvtable-thunks"
-CFLAGS46_CPLUS = CFLAGS46 + " -x c++"
+CPPFLAGS_CPLUS = INCOPT + "-lang-c++"
+CFLAGS44_CPLUS = CFLAGS + " -fvtable-thunks"
+CFLAGS46_CPLUS = CFLAGS46
 LDFLAGS_BASE = " --no-check-sections -nostdlib"
 
 # executable names and locations
@@ -99,11 +99,11 @@ AS = CROSS + "as -EL"
 LD = CROSS + "ld -EL"
 OBJCOPY = CROSS + "objcopy"
 CPP = "tools/gcc2.8.1-mipsel/cpp"
-CPLUS = "tools/gcc2.8.1-mipsel/c++"
+CPLUS = "tools/gcc2.8.1-mipsel/cc1plus"
 CC = "tools/homebrew-psyq44/cc1"
 CPP46 = "tools/gcc2.95.2-mipsel/cpp"
 CC46 = "tools/gcc2.95.2-mipsel/cc1"
-CPLUS46 = "tools/gcc2.95.2-mipsel/c++"
+CPLUS46 = "tools/gcc2.95.2-mipsel/cc1plus"
 PYTHON_EXE = "python"
 OVL_SPLIT_EXE = "tools/GTModTools/ovl.py"
 MASPSX_EXE = " tools/maspsx/maspsx.py "
