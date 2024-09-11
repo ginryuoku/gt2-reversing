@@ -88,6 +88,9 @@ CFLAGS = (
 )
 CFLAGS46 = CFLAGS + " -fargument-alias -fident"
 CPPFLAGS = INCOPT + "-lang-c"
+CPPFLAGS_CPLUS = INCOPT = "-lang-c++"
+CFLAGS44_CPLUS = CFLAGS + " -x c++ -fvtable-thunks"
+CFLAGS46_CPLUS = CFLAGS46 + " -x c++ -fvtable-thunks"
 LDFLAGS_BASE = " --no-check-sections -nostdlib"
 
 # executable names and locations
@@ -96,9 +99,11 @@ AS = CROSS + "as -EL"
 LD = CROSS + "ld -EL"
 OBJCOPY = CROSS + "objcopy"
 CPP = "tools/gcc2.8.1-mipsel/cpp"
+CPLUS = "tools/gcc2.8.1-mipsel/c++"
 CC = "tools/homebrew-psyq44/cc1"
 CPP46 = "tools/gcc2.95.2-mipsel/cpp"
 CC46 = "tools/gcc2.95.2-mipsel/cc1"
+CPLUS46 = "tools/gcc2.95.2-mipsel/c++"
 PYTHON_EXE = "python"
 OVL_SPLIT_EXE = "tools/GTModTools/ovl.py"
 MASPSX_EXE = " tools/maspsx/maspsx.py "
@@ -469,6 +474,10 @@ cpp_targets_46 = [
     "src/start/gt2_sdk_builtin_vec_delete2.c",
     "src/start/__builtin_delete.c",
 ]
+
+cplus44_targets = []
+cplus46_targets = []
+
 # these stay empty.
 # yes, even ld_flags, because we need to do some command generation to make it work.
 splat_targets = []
@@ -542,6 +551,8 @@ cpp_targets = (
     + cpp_targets_end
 )
 cpp46_targets = cpp_targets_46
+cpp44_cplus_targets = cplus44_targets
+cpp46_cplus_targets = cplus46_targets
 
 # command invocations for rules
 OVL_SPLIT_CMD = PYTHON_EXE + " " + OVL_SPLIT_EXE + " unpack -o $out $in"
@@ -575,6 +586,32 @@ CPP46_CMD = (
     + ASFLAGS
     + " -o $out"
 )
+CPP44_CPLUS_CMD = (
+    CPP
+    + CPPFLAGS_CPLUS
+    + " $in | "
+    + CPLUS
+    + CFLAGS44_CPLUS
+    + PIPE
+    + MASPSX
+    + PIPE
+    + AS
+    + ASFLAGS
+    + " -o $out"
+)
+CPP46_CPLUS_CMD = (
+    CPP
+    + CPPFLAGS_CPLUS
+    + " $in | "
+    + CPLUS46
+    + CFLAGS46_CPLUS
+    + PIPE
+    + MASPSX
+    + PIPE
+    + AS
+    + ASFLAGS
+    + " -o $out"
+)
 # invoke ninja's writer
 writer = ninja_syntax.Writer(sys.stdout)
 
@@ -591,6 +628,10 @@ writer.rule("asset", ASSET_CMD)
 writer.rule("cpp", CPP_CMD, depfile="$out.asmproc.d")
 # builds C files into objects (using 2.95.2)
 writer.rule("cpp46", CPP46_CMD, depfile="$out.asmproc.d")
+# builds C files into objects
+writer.rule("cplus44", CPP44_CPLUS_CMD, depfile="$out.asmproc.d")
+# builds C files into objects (using 2.95.2)
+writer.rule("cplus46", CPP46_CPLUS_CMD, depfile="$out.asmproc.d")
 # links objects into final elf files
 writer.rule("ld", LD + " $ldflags -T $in -Map $ldmap $ldflags_base -o $out")
 # objcopy .elf to a final exe
@@ -650,6 +691,18 @@ for filename in cpp46_targets:
     OUTPUT = BUILDDIR + filename + O_EXT
     all_objects.append(OUTPUT)
     writer.build(OUTPUT, "cpp46", filename)
+
+for filename in cpp44_cplus_targets:
+    target_num = cpp44_cplus_targets.index(filename)
+    OUTPUT = BUILDDIR + filename + O_EXT
+    all_objects.append(OUTPUT)
+    writer.build(OUTPUT, "cplus44", filename)
+
+for filename in cpp46_cplus_targets:
+    target_num = cpp46_cplus_targets.index(filename)
+    OUTPUT = BUILDDIR + filename + O_EXT
+    all_objects.append(OUTPUT)
+    writer.build(OUTPUT, "cplus46", filename)
 
 for filename in ld_targets_path:
     target_num = ld_targets_path.index(filename)
