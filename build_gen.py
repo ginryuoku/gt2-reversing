@@ -89,8 +89,8 @@ CFLAGS = (
 CFLAGS46 = CFLAGS + " -fargument-alias -fident"
 CPPFLAGS = INCOPT + "-lang-c"
 CPPFLAGS_CPLUS = INCOPT + "-lang-c++"
-CFLAGS44_CPLUS = CFLAGS + " -fvtable-thunks"
-CFLAGS46_CPLUS = CFLAGS46
+CFLAGS44_CPLUS = CFLAGS + " -fno-exceptions -fvtable-thunks"
+CFLAGS46_CPLUS = CFLAGS46 + " -fno-exceptions"
 LDFLAGS_BASE = " --no-check-sections -nostdlib"
 
 # executable names and locations
