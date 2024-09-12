@@ -72,7 +72,7 @@ ovl_split_outputs = []
 ovl_name = []
 
 # USER-EDITABLE: how many splits are present?
-target_splits = [5, 48, -1, 0, 0, 17, -1, 80]
+target_splits = [5, 48, -1, 0, 0, 17, -1, 81]
 
 mainexe_dirs = [
     "asm/nonmatchings/autogen/ovr0",
@@ -89,33 +89,25 @@ mainexe_files = ["./asm/header.s"]
 
 ovr1_dirs = [
     "asm/nonmatchings/autogen/ovr1",
-    "src/autogen/ovr1",
-    # "src/ovr1"
+    #    "src/autogen/ovr1",
+    "src/ovr1",
 ]
 ovr1_decomped_dirs = ["src/ovr1"]
 ovr2_dirs = [
     "asm/nonmatchings/autogen/ovr2",
-#    "src/autogen/ovr2",
-    "src/ovr2"
+    #    "src/autogen/ovr2",
+    "src/ovr2",
 ]
 ovr2_decomped_dirs = ["src/ovr2"]
 ovr3_dirs = [
     "asm/nonmatchings/autogen/ovr3",
-#    "src/autogen/ovr3",
-    "src/ovr3"
+    #    "src/autogen/ovr3",
+    "src/ovr3",
 ]
 ovr3_decomped_dirs = ["src/ovr3"]
-ovr4_dirs = [
-    "asm/nonmatchings/autogen/ovr4",
-    "src/autogen/ovr4",
-    "src/ovr4"
-]
+ovr4_dirs = ["asm/nonmatchings/autogen/ovr4", "src/autogen/ovr4", "src/ovr4"]
 ovr4_decomped_dirs = ["src/ovr4"]
-ovr5_dirs = [
-    "asm/nonmatchings/autogen/ovr5",
-    "src/autogen/ovr5",
-    "src/ovr5"
-]
+ovr5_dirs = ["asm/nonmatchings/autogen/ovr5", "src/autogen/ovr5", "src/ovr5"]
 ovr5_decomped_dirs = ["src/ovr5"]
 ovr6_dirs = [
     "asm/nonmatchings/autogen/ovr6",

@@ -7,7 +7,7 @@ class ScreenViewLoop
 public:
     ScreenViewLoop() {}
     virtual ~ScreenViewLoop();
-    void loop();
+    virtual void loop();
     virtual void begin();
     virtual bool is_active() 
     { 
