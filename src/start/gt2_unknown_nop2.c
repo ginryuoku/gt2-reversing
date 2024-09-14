@@ -1,6 +1,8 @@
+// FIXME: this is a virtual impl of ScreenViewLoop::is_active()
 #include "common.h"
 
-int gt2_unknown_nop2 (void)
+int is_active__14ScreenViewLoop(void)
 {
+    // return true;
     return 1;
 }

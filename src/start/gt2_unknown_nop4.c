@@ -1,6 +1,7 @@
+// FIXME: this is a virtual impl of ScreenViewLoop::end()
 #include "common.h"
 
 void
-gt2_unknown_nop4 (void)
+end__14ScreenViewLoop (void)
 {
 }

@@ -1,6 +1,7 @@
+// FIXME: this is a virtual impl of ScreenViewLoop::update()
 #include "common.h"
 
 void
-gt2_unknown_nop3 (void)
+update__14ScreenViewLoop (void)
 {
 }

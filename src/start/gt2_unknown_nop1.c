@@ -1,6 +1,7 @@
+// FIXME: this is a virtual impl of ScreenViewLoop::begin()
 #include "common.h"
 
 void
-gt2_unknown_nop1 (void)
+begin__14ScreenViewLoop (void)
 {
 }
