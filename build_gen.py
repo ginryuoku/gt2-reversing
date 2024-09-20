@@ -177,9 +177,9 @@ asm_targets = [
     "asm/data/gt2main5.rodata.s",
     "asm/data/gt2main6.rodata.s",
     "asm/data/gt2main7.rodata.s",
-    "asm/data/gt2main8.rodata.s",
+    #    "asm/data/gt2main8.rodata.s",
     "asm/data/gt2main9.rodata.s",
-    "asm/data/gt2main10.rodata.s",
+    #    "asm/data/gt2main10.rodata.s",
     "asm/data/gt2main11.rodata.s",
     "asm/data/gt2main12.rodata.s",
     "asm/data/gt2main13.rodata.s",
@@ -206,7 +206,7 @@ cpp_targets_autogen_end = [
     #    "src/lib/bios.c",
     "src/autogen/start.c",
     "src/autogen/start/gt2_callback_double_buffer_flip.c",
-    "src/autogen/start/gt2_callback_double_buffer_flip_prep.c",
+    #    "src/autogen/start/gt2_callback_double_buffer_flip_prep.c",
     "src/autogen/start/gt2_main_copyfunc0.c",
     "src/autogen/start/gt2_flip_class_type_info.c",
     "src/autogen/start/gt2_flip_si_type_info.c",
@@ -216,7 +216,7 @@ cpp_targets_autogen_end = [
     "src/autogen/start/gt2_main_func53.c",
     "src/autogen/start/gt2_main_gtmode_get_part_number.c",
     "src/autogen/start/gt2_main_gtmode_task7000_error.c",
-    "src/autogen/start/gt2_main_invoke_flip_14ScreenViewLoop.c",
+    #    "src/autogen/start/gt2_main_invoke_flip_14ScreenViewLoop.c",
     "src/autogen/start/gt2_main_menu_func1.c",
     "src/autogen/start/gt2_main_race_func16_141.c",
     "src/autogen/start/gt2_main_race_func16_1418.c",
@@ -477,7 +477,10 @@ cpp_targets_46 = [
     "src/start/__builtin_delete.c",
 ]
 
-cplus44_targets = ["src/common_cpp/psxViewLoop.cpp"]
+cplus44_targets = [
+    "src/common_cpp/psxViewLoop.cpp",
+    "src/common_cpp/ScreenViewLoop.cpp",
+]
 cplus46_targets = []
 
 # these stay empty.
